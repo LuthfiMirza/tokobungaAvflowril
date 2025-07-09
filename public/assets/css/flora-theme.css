@@ -1,0 +1,399 @@
+/*
+Theme Name: Flora - Modern & Elegant Flower E-commerce
+Description: A visually-centric theme with a pink and white color palette, focusing on high-quality product imagery and a clean user experience.
+*/
+
+/* =============================================
+   1. Global Styles & Variables
+   ============================================= */
+
+:root {
+    --primary-color: #D95A8D; /* Bright Pink */
+    --secondary-color: #F2C4D6; /* Soft Pink */
+    --accent-color: #4A4A4A; /* Dark Grey for Text */
+    --light-grey: #F5F5F5; /* Light Grey for Backgrounds */
+    --white-color: #FFFFFF;
+    --border-color: #EAEAEA;
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Playfair Display', serif;
+    --border-radius: 12px;
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
+    --transition-main: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--accent-color);
+    background-color: var(--white-color);
+    line-height: 1.6;
+}
+
+/* =============================================
+   2. Header & Navigation
+   ============================================= */
+
+.header-area {
+    background-color: var(--white-color);
+    box-shadow: var(--shadow-light);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
+.header-logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.header-logo .logo-text {
+    font-family: var(--font-secondary);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-nav ul li {
+    margin: 0 20px;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 16px;
+    padding: 10px 0;
+    position: relative;
+    transition: var(--transition-main);
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition-main);
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    color: var(--primary-color);
+}
+
+.main-nav ul li a:hover::after,
+.main-nav ul li a.active::after {
+    width: 100%;
+}
+
+.header-right-icons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.header-right-icons a {
+    color: var(--accent-color);
+    font-size: 22px;
+    position: relative;
+}
+
+.header-right-icons .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =============================================
+   3. Hero Section
+   ============================================= */
+
+.hero-section {
+    background: linear-gradient(135deg, var(--secondary-color), #FAD9E6);
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+.hero-content h1 {
+    font-family: var(--font-secondary);
+    font-size: 64px;
+    color: #333;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-main);
+    display: inline-block;
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* =============================================
+   4. Product Cards & Grids
+   ============================================= */
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-family: var(--font-secondary);
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.product-card {
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition-main);
+    box-shadow: var(--shadow-light);
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+}
+
+.product-image-container {
+    position: relative;
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.product-actions {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    transition: var(--transition-main);
+}
+
+.product-card:hover .product-actions {
+    opacity: 1;
+}
+
+.product-actions a {
+    background-color: var(--white-color);
+    color: var(--accent-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-main);
+}
+
+.product-actions a:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    transform: scale(1.1);
+}
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.product-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-content h3 {
+    font-family: var(--font-secondary);
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.product-content h3 a {
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.price .old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+/* =============================================
+   5. Category Banners
+   ============================================= */
+
+.category-banner {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+    text-align: center;
+}
+
+.category-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: var(--transition-main);
+}
+
+.category-banner:hover img {
+    transform: scale(1.05);
+}
+
+.category-banner-content {
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: var(--border-radius);
+}
+
+.category-banner-content h2 {
+    font-family: var(--font-secondary);
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+/* =============================================
+   6. Footer
+   ============================================= */
+
+.footer-area {
+    background-color: #FDF6F8; /* Very light pink */
+    padding: 60px 0 0;
+    margin-top: 80px;
+}
+
+.footer-widget h4 {
+    font-family: var(--font-secondary);
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-widget ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-widget ul li {
+    margin-bottom: 10px;
+}
+
+.footer-widget ul li a {
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: var(--transition-main);
+}
+
+.footer-widget ul li a:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+
+.footer-social-icons a {
+    color: var(--accent-color);
+    font-size: 20px;
+    margin-right: 15px;
+    transition: var(--transition-main);
+}
+
+.footer-social-icons a:hover {
+    color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+.footer-copyright {
+    background-color: #F9EBEF;
+    padding: 20px 0;
+    margin-top: 40px;
+    text-align: center;
+}
+
