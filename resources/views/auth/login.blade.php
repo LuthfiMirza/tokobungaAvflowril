@@ -3,13 +3,13 @@
 @section('title', 'Login - Avflowril')
 
 @section('content')
-<!-- Breadcrumb Area Start -->
-<div class="breadcrumb-area bg-light py-4">
+<!Breadcrumb Area Start --<div class="breadcrumb-area bg-light py-4">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="breadcrumb-content text-center">
                     <h1 class="breadcrumb-title">Login</h1>
+                    <p class="breadcrumb-subtitle">Masuk ke akun Anda untuk melanjutkan berbelanja</p>
                 </div>
             </div>
         </div>

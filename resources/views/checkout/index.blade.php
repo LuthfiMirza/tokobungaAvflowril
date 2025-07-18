@@ -186,7 +186,7 @@
                                     <div class="store-contact">
                                         <strong>Kontak:</strong><br>
                                         Telepon: (021) 8765-4321<br>
-                                        WhatsApp: 0812-3456-7890
+                                        WhatsApp: 0812 3456 7890
                                     </div>
                                 </div>
                                 <div class="store-map">

@@ -76,8 +76,8 @@
                         </div>
                         <div class="contact-content">
                             <h3>Hubungi Kami</h3>
-                            <p>0899 0894 480</p>
-                            <a href="tel:089908944800" class="contact-link">Telepon Sekarang</a>
+                            <p>0812 3456 7890</p>
+                            <a href="tel:081234567890" class="contact-link">Telepon Sekarang</a>
                         </div>
                     </div>
                 </div>
@@ -228,7 +228,7 @@
                         </div>
                         <h2>Butuh Bantuan Segera?</h2>
                         <p>Hubungi kami langsung melalui WhatsApp untuk respon yang lebih cepat</p>
-                        <a href="https://wa.me/6289908944800" class="whatsapp-btn" target="_blank">
+                        <a href="https://wa.me/6281234567890" class="whatsapp-btn" target="_blank">
                             <i class="fab fa-whatsapp"></i>
                             Chat WhatsApp
                         </a>

@@ -161,6 +161,7 @@ class OrderResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->poll('5s')
             ->columns([
                 TextColumn::make('order_number')
                     ->label('No. Pesanan')

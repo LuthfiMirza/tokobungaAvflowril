@@ -81,11 +81,11 @@
                                 </div>
                                 <div class="sort-dropdown">
                                     <select class="form-select" onchange="sortProducts(this.value)">
-                                        <option value="default">Urutkan</option>
-                                        <option value="price-low">Harga: Rendah ke Tinggi</option>
-                                        <option value="price-high">Harga: Tinggi ke Rendah</option>
-                                        <option value="name">Nama A-Z</option>
-                                        <option value="popular">Terpopuler</option>
+                                        <option value="default" {{ request('sort') == 'default' || !request('sort') ? 'selected' : '' }}>Urutkan</option>
+                                        <option value="price-low" {{ request('sort') == 'price-low' ? 'selected' : '' }}>Harga: Rendah ke Tinggi</option>
+                                        <option value="price-high" {{ request('sort') == 'price-high' ? 'selected' : '' }}>Harga: Tinggi ke Rendah</option>
+                                        <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Nama A-Z</option>
+                                        <option value="popular" {{ request('sort') == 'popular' ? 'selected' : '' }}>Terpopuler</option>
                                     </select>
                                 </div>
                             </div>
@@ -276,42 +276,47 @@
     </div>
     <!-- Features Section End -->
 
-<!-- Product Detail Modal -->
-<div class="modal fade" id="productDetailModal" tabindex="-1" aria-labelledby="productDetailModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
+<!-- Product Quick View Modal -->
+<div class="modal fade" id="productQuickViewModal" tabindex="-1" aria-labelledby="productQuickViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="productDetailModalLabel">Detail Produk</h5>
+                <h5 class="modal-title" id="productQuickViewModalLabel">
+                    <i class="fa fa-eye me-2"></i>Quick View
+                </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <!-- Product Images -->
-                    <div class="col-md-6">
-                        <div class="product-detail-images">
-                            <div class="main-image">
+                    <div class="col-lg-6">
+                        <div class="product-images-modal">
+                            <div class="main-image-modal">
                                 <img id="modalMainImage" src="" alt="" class="img-fluid">
                                 <div class="image-zoom-overlay">
                                     <i class="fa fa-search-plus"></i>
                                 </div>
                             </div>
-                            <div class="thumbnail-images">
-                                <div class="thumbnail-item active">
+                            <div class="thumbnail-images-modal">
+                                <div class="thumbnail-item-modal active">
                                     <img id="modalThumb1" src="" alt="" class="img-fluid">
                                 </div>
-                                <div class="thumbnail-item">
+                                <div class="thumbnail-item-modal">
                                     <img id="modalThumb2" src="" alt="" class="img-fluid">
                                 </div>
-                                <div class="thumbnail-item">
+                                <div class="thumbnail-item-modal">
                                     <img id="modalThumb3" src="" alt="" class="img-fluid">
+                                </div>
+                                <div class="thumbnail-item-modal">
+                                    <img id="modalThumb4" src="" alt="" class="img-fluid">
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Product Info -->
-                    <div class="col-md-6">
-                        <div class="product-detail-info">
+                    <!-- Product Details -->
+                    <div class="col-lg-6">
+                        <div class="product-detail-info-modal">
                             <div class="product-badge-modal">
                                 <span id="modalBadge" class="badge-discount">-29%</span>
                             </div>
@@ -321,20 +326,20 @@
                             <h3 class="product-title-modal" id="modalTitle">Bucket Bunga Satin Pink</h3>
                             
                             <div class="product-rating-modal">
-                                <div class="stars" id="modalStars">
+                                <div class="stars-modal" id="modalStars">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div>
-                                <span class="rating-text" id="modalRating">(24 ulasan)</span>
+                                <span class="rating-text-modal" id="modalRating">(24 ulasan)</span>
                             </div>
                             
                             <div class="product-price-modal">
                                 <span class="current-price-modal" id="modalCurrentPrice">Rp 250.000</span>
                                 <span class="old-price-modal" id="modalOldPrice">Rp 350.000</span>
-                                <span class="discount-percentage" id="modalDiscount">29% OFF</span>
+                                <span class="discount-percentage-modal" id="modalDiscount">29% OFF</span>
                             </div>
                             
                             <div class="product-description-modal">
@@ -342,37 +347,27 @@
                                 <p id="modalDescription">Bucket bunga satin yang indah dan elegan, cocok untuk hadiah spesial kepada orang tersayang. Dibuat dengan bahan berkualitas tinggi dan desain yang menarik.</p>
                             </div>
                             
-                            <div class="product-features">
-                                <h6>Keunggulan Produk</h6>
-                                <ul>
-                                    <li><i class="fa fa-check text-success me-2"></i>Bahan berkualitas tinggi</li>
-                                    <li><i class="fa fa-check text-success me-2"></i>Desain elegan dan menarik</li>
-                                    <li><i class="fa fa-check text-success me-2"></i>Tahan lama</li>
-                                    <li><i class="fa fa-check text-success me-2"></i>Cocok untuk berbagai acara</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="product-specifications">
+                            <div class="product-specifications-modal">
                                 <h6>Spesifikasi</h6>
-                                <div class="spec-item">
+                                <div class="spec-row">
                                     <span class="spec-label">Ukuran:</span>
                                     <span class="spec-value" id="modalSize">Medium (25cm x 30cm)</span>
                                 </div>
-                                <div class="spec-item">
+                                <div class="spec-row">
                                     <span class="spec-label">Berat:</span>
                                     <span class="spec-value" id="modalWeight">500 gram</span>
                                 </div>
-                                <div class="spec-item">
+                                <div class="spec-row">
                                     <span class="spec-label">Material:</span>
                                     <span class="spec-value" id="modalMaterial">Satin Premium</span>
                                 </div>
-                                <div class="spec-item">
+                                <div class="spec-row">
                                     <span class="spec-label">Warna:</span>
                                     <span class="spec-value" id="modalColor">Pink, Putih, Merah</span>
                                 </div>
                             </div>
                             
-                            <div class="quantity-selector">
+                            <div class="product-quantity-modal">
                                 <h6>Jumlah</h6>
                                 <div class="quantity-controls-modal">
                                     <button class="qty-btn-modal minus" onclick="updateModalQuantity(-1)">
@@ -389,24 +384,15 @@
                                 <button class="add-to-cart-modal-btn" id="modalAddToCart">
                                     <i class="fa fa-shopping-cart me-2"></i>Tambah ke Keranjang
                                 </button>
+                                <button class="wishlist-btn-modal" title="Tambah ke Wishlist">
+                                    <i class="fa fa-heart"></i>
+                                </button>
                                 <button class="share-btn-modal" title="Bagikan" onclick="shareProduct()">
                                     <i class="fa fa-share-alt"></i>
                                 </button>
-                            </div>
-                            
-                            <div class="delivery-info">
-                                <div class="delivery-item">
-                                    <i class="fa fa-truck text-primary me-2"></i>
-                                    <span>Pengiriman same day untuk Jakarta</span>
-                                </div>
-                                <div class="delivery-item">
-                                    <i class="fa fa-shield-alt text-success me-2"></i>
-                                    <span>Garansi kualitas 100%</span>
-                                </div>
-                                <div class="delivery-item">
-                                    <i class="fa fa-undo text-info me-2"></i>
-                                    <span>Bisa retur dalam 24 jam</span>
-                                </div>
+                                <a id="modalViewDetails" href="#" class="view-details-btn-modal">
+                                    <i class="fa fa-external-link-alt me-2"></i>Lihat Detail
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -1066,6 +1052,489 @@
     border-radius: 12px !important;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
 }
+
+/* Quick View Modal Styles - Same as Featured Products */
+.modal-xl {
+    max-width: 1200px;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    border-bottom: none;
+    padding: 20px 30px;
+}
+
+.modal-title {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.btn-close {
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    opacity: 1;
+    filter: brightness(0) invert(1);
+}
+
+.btn-close:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.1);
+}
+
+.modal-body {
+    padding: 40px;
+    background: #fafafa;
+}
+
+/* Product Images Modal */
+.product-images-modal {
+    position: sticky;
+    top: 20px;
+}
+
+.main-image-modal {
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.main-image-modal img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.image-zoom-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.main-image-modal:hover .image-zoom-overlay {
+    opacity: 1;
+}
+
+.image-zoom-overlay i {
+    color: white;
+    font-size: 24px;
+}
+
+.thumbnail-images-modal {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.thumbnail-item-modal {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.thumbnail-item-modal.active {
+    border-color: #e74c3c;
+    transform: scale(1.05);
+}
+
+.thumbnail-item-modal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Product Details Modal */
+.product-detail-info-modal {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+
+.product-badge-modal {
+    margin-bottom: 15px;
+}
+
+.product-badge-modal span {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-discount {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+.badge-popular {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+}
+
+.product-category-modal {
+    color: #e74c3c;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.product-title-modal {
+    color: #2c3e50;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.product-rating-modal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.stars-modal {
+    display: flex;
+    gap: 2px;
+}
+
+.stars-modal i {
+    color: #ffc107;
+    font-size: 16px;
+}
+
+.stars-modal i.fa-star-o {
+    color: #ddd;
+}
+
+.rating-text-modal {
+    color: #666;
+    font-size: 14px;
+}
+
+.product-price-modal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    border: 2px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.current-price-modal {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e74c3c;
+}
+
+.old-price-modal {
+    font-size: 1.2rem;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.discount-percentage-modal {
+    background: #27ae60;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.product-description-modal,
+.product-specifications-modal,
+.product-quantity-modal {
+    margin-bottom: 25px;
+}
+
+.product-description-modal h6,
+.product-specifications-modal h6,
+.product-quantity-modal h6 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.product-description-modal p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.spec-row:last-child {
+    border-bottom: none;
+}
+
+.spec-label {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.spec-value {
+    color: #666;
+}
+
+.quantity-controls-modal {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: white;
+    border: 2px solid #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    width: fit-content;
+}
+
+.qty-btn-modal {
+    width: 45px;
+    height: 45px;
+    border: none;
+    background: #f8f9fa;
+    color: #2c3e50;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qty-btn-modal:hover {
+    background: #e74c3c;
+    color: white;
+}
+
+.qty-input-modal {
+    width: 80px;
+    height: 45px;
+    border: none;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    background: white;
+    color: #2c3e50;
+}
+
+.qty-input-modal:focus {
+    outline: none;
+}
+
+/* Modal Actions */
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.add-to-cart-modal-btn {
+    flex: 1;
+    min-width: 200px;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.add-to-cart-modal-btn:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+}
+
+.wishlist-btn-modal,
+.share-btn-modal {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid #f0f0f0;
+    background: white;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.wishlist-btn-modal:hover {
+    background: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+}
+
+.share-btn-modal:hover {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.view-details-btn-modal {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.view-details-btn-modal:hover {
+    background: linear-gradient(135deg, #34495e, #2c3e50);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(44, 62, 80, 0.3);
+}
+
+/* Responsive Modal */
+@media (max-width: 1200px) {
+    .modal-xl {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-dialog {
+        margin: 10px;
+    }
+    
+    .modal-body {
+        padding: 20px;
+    }
+    
+    .product-detail-info-modal {
+        padding: 20px;
+        margin-top: 20px;
+    }
+    
+    .main-image-modal img {
+        height: 300px;
+    }
+    
+    .product-title-modal {
+        font-size: 24px;
+    }
+    
+    .current-price-modal {
+        font-size: 1.5rem;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .add-to-cart-modal-btn,
+    .view-details-btn-modal {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .wishlist-btn-modal,
+    .share-btn-modal {
+        width: 100%;
+        height: 45px;
+    }
+    
+    .thumbnail-images-modal {
+        justify-content: center;
+    }
+    
+    .thumbnail-item-modal {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+@media (max-width: 576px) {
+    .modal-header {
+        padding: 15px 20px;
+    }
+    
+    .modal-title {
+        font-size: 16px;
+    }
+    
+    .product-title-modal {
+        font-size: 20px;
+    }
+    
+    .current-price-modal {
+        font-size: 1.3rem;
+    }
+    
+    .product-price-modal {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .thumbnail-item-modal {
+        width: 60px;
+        height: 60px;
+    }
+}
 </style>
 @endpush
 
@@ -1098,22 +1567,22 @@ function quickView(productId) {
     // Show loading state
     showLoadingModal();
     
-    // Fetch product data from server
+    // Show modal immediately
+    const modal = new bootstrap.Modal(document.getElementById('productQuickViewModal'));
+    modal.show();
+    
+    // Try to fetch real product data
     fetch(`/api/product/${productId}`)
         .then(response => response.json())
         .then(product => {
             populateModal(product);
-            const modal = new bootstrap.Modal(document.getElementById('productDetailModal'));
-            modal.show();
         })
         .catch(error => {
-            console.error('Error fetching product:', error);
-            // Fallback to product data from page
+            console.log('API fetch failed, using fallback data:', error);
+            // Fallback to extracting data from the product card
             const productCard = document.querySelector(`[onclick="quickView(${productId})"]`).closest('.product-card');
             const fallbackProduct = extractProductDataFromCard(productCard, productId);
             populateModal(fallbackProduct);
-            const modal = new bootstrap.Modal(document.getElementById('productDetailModal'));
-            modal.show();
         });
 }
 
@@ -1238,6 +1707,9 @@ function populateModal(product) {
     
     // Reset quantity
     document.getElementById('modalQuantity').value = 1;
+    
+    // Set up view details link
+    setupViewDetailsLink(product.id);
 }
 
 // Add to cart from modal
@@ -1357,6 +1829,46 @@ if (!document.querySelector('#notification-styles')) {
         }
     `;
     document.head.appendChild(notificationStyles);
+}
+
+// Thumbnail image switching
+document.addEventListener('DOMContentLoaded', function() {
+    const thumbnails = document.querySelectorAll('.thumbnail-item-modal');
+    const mainImage = document.getElementById('modalMainImage');
+    
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+            // Remove active class from all thumbnails
+            thumbnails.forEach(t => t.classList.remove('active'));
+            
+            // Add active class to clicked thumbnail
+            this.classList.add('active');
+            
+            // Update main image
+            const thumbnailImg = this.querySelector('img');
+            if (thumbnailImg && mainImage) {
+                mainImage.src = thumbnailImg.src;
+            }
+        });
+    });
+    
+    // Image zoom functionality
+    const imageZoomOverlay = document.querySelector('.image-zoom-overlay');
+    if (imageZoomOverlay) {
+        imageZoomOverlay.addEventListener('click', function() {
+            const mainImage = document.getElementById('modalMainImage');
+            // Create a larger image view (you can implement a lightbox here)
+            window.open(mainImage.src, '_blank');
+        });
+    }
+});
+
+// Set up view details link
+function setupViewDetailsLink(productId) {
+    const viewDetailsBtn = document.getElementById('modalViewDetails');
+    if (viewDetailsBtn) {
+        viewDetailsBtn.href = `/product/${productId}`;
+    }
 }
 </script>
 @endpush

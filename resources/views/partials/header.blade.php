@@ -234,6 +234,52 @@
     width: 100%;
 }
 
+/* Navigation Auth Section Styles */
+.nav-auth-section {
+    margin-left: 20px;
+}
+
+.nav-login {
+    background: linear-gradient(135deg, #3498db, #2980b9) !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    border-radius: 25px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    border: 2px solid transparent !important;
+}
+
+.nav-login:hover,
+.nav-login.active {
+    background: linear-gradient(135deg, #2980b9, #21618c) !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+}
+
+.nav-register {
+    background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    border-radius: 25px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    border: 2px solid transparent !important;
+}
+
+.nav-register:hover,
+.nav-register.active {
+    background: linear-gradient(135deg, #c0392b, #a93226) !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+}
+
+.nav-login::after,
+.nav-register::after {
+    display: none !important;
+}
+
 /* Header Icons */
 .header-right-icons {
     gap: 15px;

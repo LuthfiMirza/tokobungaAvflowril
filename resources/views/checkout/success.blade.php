@@ -134,6 +134,11 @@
                             </a>
                         @endif
                         
+                        <!-- WhatsApp Confirmation Button -->
+                        <a href="#" class="btn btn-whatsapp" onclick="confirmOrderViaWhatsApp('{{ $order->order_number }}', '{{ $order->formatted_total }}', '{{ $order->customer_name }}')">
+                            <i class="fab fa-whatsapp me-2"></i>Konfirmasi via WhatsApp
+                        </a>
+                        
                         <a href="{{ route('orders.tracking', $order->order_number) }}" class="btn btn-secondary">
                             <i class="fa fa-search me-2"></i>Lacak Pesanan
                         </a>
@@ -149,7 +154,7 @@
                             <i class="fa fa-headset text-primary"></i>
                             <div>
                                 <h6>Butuh Bantuan?</h6>
-                                <p>Hubungi customer service kami di <strong>0812-3456-7890</strong> atau email <strong>support@avflowril.com</strong></p>
+                                <p>Hubungi customer service kami di <strong>0812 3456 7890</strong> atau email <strong>support@avflowril.com</strong></p>
                             </div>
                         </div>
                     </div>
@@ -438,6 +443,46 @@
     transform: translateY(-2px);
 }
 
+/* WhatsApp Button */
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: white;
+    border-color: #25d366;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-whatsapp:hover {
+    background: linear-gradient(135deg, #128c7e, #0d7377);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.btn-whatsapp:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-whatsapp:hover:before {
+    left: 100%;
+}
+
+.btn-whatsapp i {
+    animation: whatsappPulse 2s ease-in-out infinite;
+}
+
+@keyframes whatsappPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
 /* Contact Info */
 .contact-info {
     margin-bottom: 40px;
@@ -696,6 +741,108 @@ const toastStyles = `
 `;
 
 document.head.insertAdjacentHTML('beforeend', toastStyles);
+
+// WhatsApp Order Confirmation Function
+function confirmOrderViaWhatsApp(orderNumber, totalAmount, customerName) {
+    // WhatsApp business number (replace with actual business number)
+    const whatsappNumber = '6281234567890'; // Format: country code + number without +
+    
+    // Create order confirmation message
+    const message = `🌸 *KONFIRMASI PESANAN AVFLOWRIL* 🌸
+
+Halo! Saya ingin mengkonfirmasi pesanan saya:
+
+📋 *Detail Pesanan:*
+• Nomor Pesanan: *${orderNumber}*
+• Nama Pemesan: *${customerName || 'Customer'}*
+• Total Pembayaran: *${totalAmount}*
+• Tanggal: *${new Date().toLocaleDateString('id-ID')}*
+
+✅ Pesanan telah berhasil dibuat melalui website Avflowril.
+
+Mohon konfirmasi dan informasi lebih lanjut mengenai:
+• Status pemrosesan pesanan
+• Estimasi waktu pengiriman
+• Detail pengiriman
+
+Terima kasih! 🙏`;
+
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Show loading state
+    const btn = event.target.closest('.btn-whatsapp');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="fa fa-spinner fa-spin me-2"></i>Membuka WhatsApp...';
+    btn.style.pointerEvents = 'none';
+    
+    // Open WhatsApp
+    setTimeout(() => {
+        window.open(whatsappUrl, '_blank');
+        
+        // Reset button after delay
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.pointerEvents = 'auto';
+            
+            // Show success message
+            showWhatsAppToast();
+        }, 2000);
+    }, 500);
+}
+
+// Show WhatsApp success toast
+function showWhatsAppToast() {
+    const toast = $('<div class="whatsapp-toast"><i class="fab fa-whatsapp me-2"></i>WhatsApp berhasil dibuka! Silakan kirim pesan konfirmasi.</div>');
+    $('body').append(toast);
+    
+    setTimeout(() => {
+        toast.addClass('show');
+    }, 100);
+    
+    setTimeout(() => {
+        toast.removeClass('show');
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, 4000);
+}
+
+// Add WhatsApp toast styles
+const whatsappToastStyles = `
+<style>
+.whatsapp-toast {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    z-index: 9999;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    max-width: 350px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.whatsapp-toast.show {
+    transform: translateX(0);
+}
+
+.whatsapp-toast i {
+    color: white;
+}
+</style>
+`;
+
+document.head.insertAdjacentHTML('beforeend', whatsappToastStyles);
 </script>
 @endpush
 @endsection

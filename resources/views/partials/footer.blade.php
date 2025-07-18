@@ -74,7 +74,7 @@
                                 <i class="fa fa-phone"></i>
                                 <div class="contact-details">
                                     <span class="label">Telepon</span>
-                                    <a href="tel:+6289908944800">+62 899 0894 480</a>
+                                    <a href="tel:+6281234567890">+62 812 3456 7890</a>
                                 </div>
                             </div>
                             <div class="contact-item">
