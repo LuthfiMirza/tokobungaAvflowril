@@ -68,7 +68,7 @@ class OrderResource extends Resource
                                         'pending' => 'Menunggu',
                                         'processing' => 'Diproses',
                                         'shipped' => 'Dikirim',
-                                        'delivered' => 'Terkirim',
+                                        'delivered' => 'Diterima',
                                         'cancelled' => 'Dibatalkan',
                                     ])
                                     ->default('pending'),
@@ -188,7 +188,7 @@ class OrderResource extends Resource
                         'pending' => 'Menunggu',
                         'processing' => 'Diproses',
                         'shipped' => 'Dikirim',
-                        'delivered' => 'Terkirim',
+                        'delivered' => 'Diterima',
                         'cancelled' => 'Dibatalkan',
                         default => $state,
                     }),
@@ -253,7 +253,7 @@ class OrderResource extends Resource
                         'pending' => 'Menunggu',
                         'processing' => 'Diproses',
                         'shipped' => 'Dikirim',
-                        'delivered' => 'Terkirim',
+                        'delivered' => 'Diterima',
                         'cancelled' => 'Dibatalkan',
                     ]),
 
@@ -365,7 +365,7 @@ class OrderResource extends Resource
                             ];
                         } elseif ($record->status === 'shipped') {
                             $statusOptions = [
-                                'delivered' => 'Terkirim',
+                                'delivered' => 'Diterima',
                             ];
                         }
                         
@@ -398,7 +398,7 @@ class OrderResource extends Resource
                         $statusLabel = match($data['status']) {
                             'processing' => 'Diproses',
                             'shipped' => 'Dikirim',
-                            'delivered' => 'Terkirim',
+                            'delivered' => 'Diterima',
                             default => $data['status']
                         };
                         

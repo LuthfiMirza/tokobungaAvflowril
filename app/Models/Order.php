@@ -112,7 +112,7 @@ class Order extends Model
             'pending' => 'Menunggu Konfirmasi',
             'processing' => 'Sedang Diproses',
             'shipped' => 'Dikirim',
-            'delivered' => 'Terkirim',
+            'delivered' => 'Diterima',
             'cancelled' => 'Dibatalkan',
             default => ucfirst($this->status)
         };
@@ -238,7 +238,7 @@ class Order extends Model
             'packed' => 'Pesanan Dikemas',
             'shipped' => 'Pesanan Dikirim',
             'out_for_delivery' => 'Dalam Perjalanan',
-            'delivered' => 'Pesanan Terkirim',
+            'delivered' => 'Pesanan Diterima',
             'cancelled' => 'Pesanan Dibatalkan',
             default => 'Update Status'
         };
@@ -253,7 +253,7 @@ class Order extends Model
             'packed' => 'Pesanan Anda telah dikemas dan siap untuk dikirim.',
             'shipped' => 'Pesanan Anda telah dikirim dan dalam perjalanan.',
             'out_for_delivery' => 'Pesanan Anda sedang dalam perjalanan untuk pengiriman.',
-            'delivered' => 'Pesanan Anda telah berhasil terkirim.',
+            'delivered' => 'Pesanan Anda telah berhasil diterima.',
             'cancelled' => 'Pesanan Anda telah dibatalkan.',
             default => 'Status pesanan telah diperbarui.'
         };

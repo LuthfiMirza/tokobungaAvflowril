@@ -23,7 +23,7 @@ class OrderSeeder extends Seeder
                 'name' => 'Test User',
                 'email' => 'test@example.com',
                 'password' => bcrypt('password'),
-                'phone' => '081234567890',
+                'phone' => '081384303654',
                 'address' => 'Jl. Test No. 123, Jakarta'
             ]);
         }
@@ -193,8 +193,8 @@ class OrderSeeder extends Seeder
 
             $order->addTracking(
                 'delivered',
-                'Pesanan Terkirim',
-                'Pesanan Anda telah berhasil terkirim dan diterima.',
+                'Pesanan Diterima',
+                'Pesanan Anda telah berhasil diterima.',
                 $order->shipping_address['address'],
                 ['received_by' => $order->shipping_address['name']],
                 $order->delivered_at

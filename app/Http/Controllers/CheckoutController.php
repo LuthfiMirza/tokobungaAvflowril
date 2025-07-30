@@ -56,9 +56,9 @@ class CheckoutController extends Controller
                 'description' => 'Bayar dengan dompet digital',
                 'icon' => 'fa-mobile-alt',
                 'wallets' => [
-                    'gopay' => ['name' => 'GoPay', 'number' => '081234567890'],
-                    'ovo' => ['name' => 'OVO', 'number' => '081234567890'],
-                    'dana' => ['name' => 'DANA', 'number' => '081234567890'],
+                    'gopay' => ['name' => 'GoPay', 'number' => '081384303654'],
+                    'ovo' => ['name' => 'OVO', 'number' => '081384303654'],
+                    'dana' => ['name' => 'DANA', 'number' => '081384303654'],
                 ]
             ],
             'cod' => [
@@ -421,9 +421,9 @@ class CheckoutController extends Controller
                     'Tunggu konfirmasi dari tim kami'
                 ],
                 'wallets' => [
-                    'gopay' => ['name' => 'GoPay', 'number' => '081234567890'],
-                    'ovo' => ['name' => 'OVO', 'number' => '081234567890'],
-                    'dana' => ['name' => 'DANA', 'number' => '081234567890'],
+                    'gopay' => ['name' => 'GoPay', 'number' => '081384303654'],
+                    'ovo' => ['name' => 'OVO', 'number' => '081384303654'],
+                    'dana' => ['name' => 'DANA', 'number' => '081384303654'],
                 ]
             ],
             'cod' => [

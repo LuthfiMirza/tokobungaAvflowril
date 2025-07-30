@@ -95,10 +95,14 @@
                                             </form>
                                         @endif
                                         
-                                        @if($order->payment_method !== 'cod' && $order->status === 'pending')
+                                        @if($order->payment_method !== 'cod' && $order->status === 'pending' && ($order->payment_status === 'pending' || $order->payment_status === null))
                                             <a href="{{ route('checkout.payment', $order->order_number) }}" class="btn btn-success btn-sm">
                                                 <i class="fa fa-credit-card me-1"></i>Bayar
                                             </a>
+                                        @elseif($order->payment_status === 'paid' || $order->payment_status === 'confirmed')
+                                            <span class="badge bg-success">
+                                                <i class="fa fa-check me-1"></i>Lunas
+                                            </span>
                                         @endif
                                     </div>
                                     
@@ -366,6 +370,20 @@
     padding: 6px 12px;
     font-size: 0.8rem;
     border-radius: 6px;
+}
+
+.badge {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.bg-success {
+    background-color: #28a745 !important;
+    color: white;
 }
 
 .latest-tracking {

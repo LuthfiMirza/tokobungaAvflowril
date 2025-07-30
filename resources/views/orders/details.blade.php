@@ -209,11 +209,26 @@
                                         </span>
                                     </div>
                                     
-                                    @if($order->payment_method !== 'cod' && $order->status === 'pending')
+                                    @if($order->payment_method !== 'cod' && $order->status === 'pending' && ($order->payment_status === 'pending' || $order->payment_status === null))
                                         <div class="payment-action">
                                             <a href="{{ route('checkout.payment', $order->order_number) }}" class="btn btn-success btn-block">
                                                 <i class="fa fa-credit-card me-2"></i>Lanjut Pembayaran
                                             </a>
+                                        </div>
+                                    @elseif($order->payment_status === 'paid' || $order->payment_status === 'confirmed')
+                                        <div class="payment-success">
+                                            <div class="success-message">
+                                                <i class="fa fa-check-circle me-2"></i>
+                                                <span>Pembayaran telah dikonfirmasi</span>
+                                            </div>
+                                            @if($order->payment_proof)
+                                                <div class="payment-proof-info">
+                                                    <small class="text-muted">
+                                                        <i class="fa fa-image me-1"></i>
+                                                        Bukti pembayaran telah diterima
+                                                    </small>
+                                                </div>
+                                            @endif
                                         </div>
                                     @endif
                                 </div>
@@ -643,6 +658,41 @@
 
 .payment-action {
     margin-top: 15px;
+}
+
+.payment-success {
+    margin-top: 15px;
+    padding: 15px;
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+}
+
+.success-message {
+    display: flex;
+    align-items: center;
+    color: #155724;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.success-message i {
+    color: #28a745;
+    margin-right: 8px;
+}
+
+.payment-proof-info {
+    margin-top: 8px;
+}
+
+.payment-proof-info small {
+    display: flex;
+    align-items: center;
+    color: #6c757d;
+}
+
+.payment-proof-info i {
+    margin-right: 4px;
 }
 
 .recipient-info {

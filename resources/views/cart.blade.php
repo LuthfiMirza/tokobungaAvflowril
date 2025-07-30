@@ -4,13 +4,13 @@
 @section('description', 'Keranjang belanja Anda di Avflowril')
 
 @section('content')
-    <!-- Breadcrumb Area Start Here -->
-    <div class="breadcrumbs-area position-relative">
+    <!-- Breadcrumb Area Start -->
+    <div class="breadcrumb-area">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <div class="breadcrumb-content position-relative section-content">
-                        <h3 class="title-3">Keranjang Belanja</h3>
+                    <div class="breadcrumb-content">
+                        <h1 class="breadcrumb-title">Keranjang Belanja</h1>
                         <div class="breadcrumb-nav">
                             <a href="{{ route('home') }}">Home</a>
                             <i class="fa fa-chevron-right"></i>
@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-    <!-- Breadcrumb Area End Here -->
+    <!-- Breadcrumb Area End -->
 
     <!-- cart main wrapper start -->
     <div class="cart-main-wrapper mt-no-text">
@@ -169,6 +169,17 @@
                             </div>
                         </div>
                         <a href="{{ route('checkout.index') }}" class="btn flosun-button primary-btn rounded-0 black-btn w-100">Lanjut ke Checkout</a>
+                        
+                        <!-- Payment Icons -->
+                        <div class="payment-icons">
+                            <h6>Metode Pembayaran yang Didukung:</h6>
+                            <div class="supported-banks">
+                                <img src="{{ asset('assets/images/payment/bca.svg') }}" alt="BCA">
+                                <img src="{{ asset('assets/images/payment/mandiri.svg') }}" alt="Mandiri">
+                                <img src="{{ asset('assets/images/payment/bni.svg') }}" alt="BNI">
+                                <img src="{{ asset('assets/images/payment/bri.svg') }}" alt="BRI">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -202,14 +213,13 @@
 
 @push('styles')
 <style>
-/* Breadcrumb Styles */
-.breadcrumbs-area {
+/* Breadcrumb */
+.breadcrumb-area {
     background: linear-gradient(135deg, #ffeef0 0%, #fff5f6 100%);
     padding: 60px 0;
-    border-bottom: 1px solid #f0f0f0;
 }
 
-.breadcrumb-content h3 {
+.breadcrumb-title {
     color: #2c3e50;
     font-weight: 700;
     margin-bottom: 15px;
@@ -232,6 +242,7 @@
 
 .breadcrumb-nav a:hover {
     color: #c0392b;
+    text-decoration: none;
 }
 
 .breadcrumb-nav i {
@@ -473,6 +484,42 @@
     color: white;
 }
 
+/* Payment Icons */
+.payment-icons {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+    text-align: center;
+}
+
+.payment-icons h6 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.supported-banks {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.supported-banks img {
+    width: 40px;
+    height: 26px;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.supported-banks img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
 /* Continue Shopping */
 .continue-shopping {
     margin-top: 30px;
@@ -540,7 +587,7 @@
         padding: 40px 0;
     }
     
-    .breadcrumbs-area {
+    .breadcrumb-area {
         padding: 40px 0;
     }
     

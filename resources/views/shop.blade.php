@@ -105,7 +105,7 @@
                 <div class="col-12">
                     <div class="category-tabs">
                         @foreach($categories as $key => $label)
-                            <button class="category-tab {{ $key === 'all' ? 'active' : '' }}" 
+                            <button class="category-tab {{ (request('category') == $key) || (request('category') == null && $key === 'all') ? 'active' : '' }}" 
                                     data-category="{{ $key }}" 
                                     onclick="filterByCategory('{{ $key }}')">
                                 {{ $label }}
@@ -222,6 +222,28 @@
         </div>
     </div>
     <!-- Products Section End -->
+
+    <!-- Custom Order Section Start -->
+    <div class="custom-order-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="custom-order-card">
+                        <div class="custom-order-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3 class="custom-order-title">Butuh Desain Khusus?</h3>
+                        <p class="custom-order-subtitle">Tidak menemukan bucket bunga yang sesuai keinginan? Kami siap membuatkan desain custom sesuai permintaan Anda!</p>
+                        <a href="https://wa.me/6281384303654?text=Halo%20Avflowril,%20saya%20ingin%20custom%20order%20bucket%20bunga" 
+                           class="custom-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i>Custom Order Aja
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Custom Order Section End -->
 
     <!-- Features Section Start -->
     <div class="features-section">
@@ -799,6 +821,133 @@
     transform: translateY(-2px);
 }
 
+/* Custom Order Section */
+.custom-order-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.custom-order-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="whatsapp-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23whatsapp-pattern)"/></svg>');
+    opacity: 0.3;
+}
+
+.custom-order-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.custom-order-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.custom-order-icon i {
+    font-size: 3rem;
+    color: white;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+    }
+}
+
+.custom-order-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.custom-order-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.custom-order-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: white;
+    padding: 18px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.custom-order-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.custom-order-btn:hover::before {
+    left: 100%;
+}
+
+.custom-order-btn:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.custom-order-btn i {
+    font-size: 1.3rem;
+    margin-right: 12px;
+}
+
 /* Features Section */
 .features-section {
     padding: 60px 0;
@@ -909,6 +1058,33 @@
     
     .product-image {
         height: 200px;
+    }
+    
+    /* Custom Order Section Mobile */
+    .custom-order-card {
+        padding: 40px 25px;
+    }
+    
+    .custom-order-icon {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .custom-order-icon i {
+        font-size: 2.5rem;
+    }
+    
+    .custom-order-title {
+        font-size: 2rem;
+    }
+    
+    .custom-order-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .custom-order-btn {
+        padding: 16px 30px;
+        font-size: 1.1rem;
     }
 }
 

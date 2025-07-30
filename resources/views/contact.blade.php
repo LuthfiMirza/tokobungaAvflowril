@@ -22,22 +22,22 @@
                 <div class="col-lg-6">
                     <div class="contact-hero-icons">
                         <div class="hero-icon-grid">
-                            <div class="hero-icon">
+                            <a href="mailto:avflowril@gmail.com" class="hero-icon" title="Kirim Email">
                                 <i class="fa fa-envelope"></i>
                                 <span>Email</span>
-                            </div>
-                            <div class="hero-icon">
+                            </a>
+                            <a href="tel:+6281384303654" class="hero-icon" title="Telepon Sekarang">
                                 <i class="fa fa-phone"></i>
                                 <span>Telepon</span>
-                            </div>
-                            <div class="hero-icon">
+                            </a>
+                            <a href="https://maps.google.com/?q=JL.+Timbul,+Jakarta+Indonesia" target="_blank" class="hero-icon" title="Lihat Lokasi di Maps">
                                 <i class="fa fa-map-marker-alt"></i>
                                 <span>Lokasi</span>
-                            </div>
-                            <div class="hero-icon">
+                            </a>
+                            <a href="https://wa.me/6281384303654?text=Halo%20Avflowril,%20saya%20ingin%20bertanya%20tentang%20produk%20Anda" target="_blank" class="hero-icon" title="Chat WhatsApp">
                                 <i class="fab fa-whatsapp"></i>
                                 <span>WhatsApp</span>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -76,8 +76,8 @@
                         </div>
                         <div class="contact-content">
                             <h3>Hubungi Kami</h3>
-                            <p>0812 3456 7890</p>
-                            <a href="tel:081234567890" class="contact-link">Telepon Sekarang</a>
+                            <p>0813 8430 3654</p>
+                            <a href="tel:081384303654" class="contact-link">Telepon Sekarang</a>
                         </div>
                     </div>
                 </div>
@@ -91,79 +91,6 @@
                             <p>avflowril@gmail.com</p>
                             <a href="mailto:avflowril@gmail.com" class="contact-link">Kirim Email</a>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Form Section -->
-    <section class="contact-form-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title text-center">
-                        <span class="section-subtitle">Kirim Pesan</span>
-                        <h2>Hubungi Kami Sekarang</h2>
-                        <p>Silakan isi form di bawah ini untuk pertanyaan, pemesanan khusus, atau informasi lebih lanjut</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="contact-form-wrapper">
-                        <form action="#" method="POST" class="modern-contact-form">
-                            @csrf
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="name">Nama Lengkap *</label>
-                                        <input type="text" id="name" name="name" class="form-control" required>
-                                        <i class="fa fa-user form-icon"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="email">Email *</label>
-                                        <input type="email" id="email" name="email" class="form-control" required>
-                                        <i class="fa fa-envelope form-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="phone">Nomor Telepon</label>
-                                        <input type="tel" id="phone" name="phone" class="form-control">
-                                        <i class="fa fa-phone form-icon"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="subject">Subjek</label>
-                                        <input type="text" id="subject" name="subject" class="form-control">
-                                        <i class="fa fa-tag form-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="message">Pesan *</label>
-                                        <textarea id="message" name="message" class="form-control" rows="6" required placeholder="Tulis pesan Anda di sini..."></textarea>
-                                        <i class="fa fa-comment form-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                    <button type="submit" class="btn-primary">
-                                        <i class="fa fa-paper-plane"></i>
-                                        Kirim Pesan
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -228,7 +155,7 @@
                         </div>
                         <h2>Butuh Bantuan Segera?</h2>
                         <p>Hubungi kami langsung melalui WhatsApp untuk respon yang lebih cepat</p>
-                        <a href="https://wa.me/6281234567890" class="whatsapp-btn" target="_blank">
+                        <a href="https://wa.me/6281384303654" class="whatsapp-btn" target="_blank">
                             <i class="fab fa-whatsapp"></i>
                             Chat WhatsApp
                         </a>
@@ -315,12 +242,21 @@
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
     border: 2px solid #f0f0f0;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
 }
 
 .hero-icon:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(231, 76, 60, 0.2);
     border-color: #e74c3c;
+    text-decoration: none;
+}
+
+.hero-icon:focus {
+    outline: 2px solid #e74c3c;
+    outline-offset: 2px;
 }
 
 .hero-icon i {
@@ -328,12 +264,23 @@
     color: #e74c3c;
     margin-bottom: 10px;
     display: block;
+    transition: all 0.3s ease;
+}
+
+.hero-icon:hover i {
+    transform: scale(1.1);
+    color: #c0392b;
 }
 
 .hero-icon span {
     font-size: 14px;
     color: #666;
     font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.hero-icon:hover span {
+    color: #e74c3c;
 }
 
 /* Contact Info Section */

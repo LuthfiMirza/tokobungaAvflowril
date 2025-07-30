@@ -49,7 +49,7 @@
                                 <span>Pengiriman tepat waktu</span>
                             </div>
                         </div>
-                        <a href="{{ route('shop') }}" class="btn-primary">Lihat Koleksi</a>
+                        
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -87,7 +87,7 @@
                                 <span>Kemasan mewah dan eksklusif</span>
                             </div>
                         </div>
-                        <a href="{{ route('shop') }}" class="btn-primary">Lihat Koleksi</a>
+                        
                     </div>
                 </div>
                 <div class="col-lg-6 order-lg-1">

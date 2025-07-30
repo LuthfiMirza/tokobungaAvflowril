@@ -186,7 +186,7 @@
                                     <div class="store-contact">
                                         <strong>Kontak:</strong><br>
                                         Telepon: (021) 8765-4321<br>
-                                        WhatsApp: 0812 3456 7890
+                                        WhatsApp: 0813 8430 3654
                                     </div>
                                 </div>
                                 <div class="store-map">
@@ -223,10 +223,20 @@
                                     <label for="payment_bank_transfer" class="payment-label">
                                         <div class="payment-info">
                                             <div class="payment-header">
-                                                <i class="fa fa-university payment-icon"></i>
-                                                <span class="payment-name">Transfer Bank</span>
+                                                <div class="payment-logo">
+                                                    <img src="{{ asset('assets/images/payment/bank-transfer.svg') }}" alt="Transfer Bank">
+                                                </div>
+                                                <div class="payment-details">
+                                                    <span class="payment-name">Transfer Bank</span>
+                                                    <p class="payment-description">Transfer melalui rekening bank</p>
+                                                </div>
                                             </div>
-                                            <p class="payment-description">Transfer melalui rekening bank</p>
+                                            <div class="supported-banks">
+                                                <img src="{{ asset('assets/images/payment/bca.svg') }}" alt="BCA">
+                                                <img src="{{ asset('assets/images/payment/mandiri.svg') }}" alt="Mandiri">
+                                                <img src="{{ asset('assets/images/payment/bni.svg') }}" alt="BNI">
+                                                <img src="{{ asset('assets/images/payment/bri.svg') }}" alt="BRI">
+                                            </div>
                                         </div>
                                     </label>
                                 </div>
@@ -236,11 +246,15 @@
                                     <label for="payment_cod" class="payment-label">
                                         <div class="payment-info">
                                             <div class="payment-header">
-                                                <i class="fa fa-money-bill payment-icon"></i>
-                                                <span class="payment-name">Bayar di Tempat (COD)</span>
-                                                <span class="payment-fee">+Rp 5.000</span>
+                                                <div class="payment-logo">
+                                                    <img src="{{ asset('assets/images/payment/cod.svg') }}" alt="COD">
+                                                </div>
+                                                <div class="payment-details">
+                                                    <span class="payment-name">Bayar di Tempat (COD)</span>
+                                                    <span class="payment-fee">+Rp 5.000</span>
+                                                    <p class="payment-description">Bayar saat barang diterima</p>
+                                                </div>
                                             </div>
-                                            <p class="payment-description">Bayar saat barang diterima</p>
                                         </div>
                                     </label>
                                 </div>
@@ -626,19 +640,31 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
 }
 
-.payment-icon {
-    font-size: 1.5rem;
-    color: #e74c3c;
-    width: 30px;
+.payment-logo {
+    width: 60px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.payment-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.payment-details {
+    flex: 1;
 }
 
 .payment-name {
     font-weight: 600;
     color: #2c3e50;
-    flex: 1;
+    display: block;
+    margin-bottom: 5px;
 }
 
 .payment-fee {
@@ -648,12 +674,28 @@
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 600;
+    margin-left: 10px;
 }
 
 .payment-description {
     color: #666;
     margin: 0;
     font-size: 0.9rem;
+}
+
+.supported-banks {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.supported-banks img {
+    width: 40px;
+    height: 26px;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 1px solid #e9ecef;
 }
 
 /* Checkout Summary */
@@ -853,6 +895,10 @@
     .store-info-card {
         padding: 20px;
     }
+    
+    .supported-banks {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 576px) {
@@ -872,6 +918,16 @@
     .store-hours,
     .store-contact {
         padding: 12px;
+    }
+    
+    .payment-logo {
+        width: 50px;
+        height: 32px;
+    }
+    
+    .supported-banks img {
+        width: 35px;
+        height: 22px;
     }
 }
 </style>

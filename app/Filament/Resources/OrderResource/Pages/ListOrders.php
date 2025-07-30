@@ -47,7 +47,7 @@ class ListOrders extends ListRecords
                 ->badge($this->getModel()::where('status', 'shipped')->count())
                 ->badgeColor('primary'),
             
-            'delivered' => Tab::make('Terkirim')
+            'delivered' => Tab::make('Diterima')
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'delivered'))
                 ->badge($this->getModel()::where('status', 'delivered')->count())
                 ->badgeColor('success'),

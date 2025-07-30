@@ -304,10 +304,10 @@
                             <p>Tim customer service kami siap membantu Anda 24/7</p>
                         </div>
                         <div class="support-actions">
-                            <a href="https://wa.me/6281234567890" class="btn btn-success btn-sm" target="_blank">
+                            <a href="https://wa.me/6281384303654" class="btn btn-success btn-sm" target="_blank">
                                 <i class="fa fa-whatsapp me-1"></i>WhatsApp
                             </a>
-                            <a href="tel:081234567890" class="btn btn-info btn-sm">
+                            <a href="tel:081384303654" class="btn btn-info btn-sm">
                                 <i class="fa fa-phone me-1"></i>Telepon
                             </a>
                         </div>

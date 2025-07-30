@@ -1988,7 +1988,7 @@ Terima kasih! 🙏
 @endif`;
 
     // WhatsApp number (ganti dengan nomor WhatsApp bisnis Anda)
-    const whatsappNumber = '6281234567890'; // Ganti dengan nomor WhatsApp Anda
+    const whatsappNumber = '6281384303654'; // Ganti dengan nomor WhatsApp Anda
     
     // Create WhatsApp URL
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;

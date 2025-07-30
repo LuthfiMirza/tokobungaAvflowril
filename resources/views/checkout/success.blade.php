@@ -154,7 +154,7 @@
                             <i class="fa fa-headset text-primary"></i>
                             <div>
                                 <h6>Butuh Bantuan?</h6>
-                                <p>Hubungi customer service kami di <strong>0812 3456 7890</strong> atau email <strong>support@avflowril.com</strong></p>
+                                <p>Hubungi customer service kami di <strong>0813 8430 3654</strong> atau email <strong>support@avflowril.com</strong></p>
                             </div>
                         </div>
                     </div>
@@ -745,7 +745,7 @@ document.head.insertAdjacentHTML('beforeend', toastStyles);
 // WhatsApp Order Confirmation Function
 function confirmOrderViaWhatsApp(orderNumber, totalAmount, customerName) {
     // WhatsApp business number (replace with actual business number)
-    const whatsappNumber = '6281234567890'; // Format: country code + number without +
+    const whatsappNumber = '6281384303654'; // Format: country code + number without +
     
     // Create order confirmation message
     const message = `🌸 *KONFIRMASI PESANAN AVFLOWRIL* 🌸

@@ -74,7 +74,7 @@
                                 <i class="fa fa-phone"></i>
                                 <div class="contact-details">
                                     <span class="label">Telepon</span>
-                                    <a href="tel:+6281234567890">+62 812 3456 7890</a>
+                                    <a href="tel:+6281384303654">+62 813 8430 3654</a>
                                 </div>
                             </div>
                             <div class="contact-item">
@@ -91,22 +91,7 @@
                                     <span>JL. Timbul, Jakarta Indonesia</span>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <!-- Newsletter -->
-                        <div class="newsletter-section">
-                            <h5>Newsletter</h5>
-                            <p>Dapatkan update terbaru dan promo spesial</p>
-                            <form class="newsletter-form" action="#" method="POST">
-                                @csrf
-                                <div class="newsletter-input">
-                                    <input type="email" name="email" placeholder="Email Anda" required>
-                                    <button type="submit" class="newsletter-btn">
-                                        <i class="fa fa-paper-plane"></i>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+                        </div>     
                     </div>
                 </div>
             </div>

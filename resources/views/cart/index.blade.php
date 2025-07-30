@@ -10,14 +10,12 @@
         <div class="row">
             <div class="col-12 text-center">
                 <div class="breadcrumb-content">
-                    <h1 class="breadcrumb-title">Keranjang Belanja</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('shop') }}">Shop</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Keranjang</li>
-                        </ol>
-                    </nav>
+                    <h1 class="breadcrumb-title">Checkout</h1>
+                    <div class="breadcrumb-nav">
+                        <a href="{{ route('home') }}">Home</a>
+                        <i class="fa fa-chevron-right"></i>
+                        <span>Keranjang</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -147,11 +145,11 @@
                             <div class="payment-methods">
                                 <p>Metode Pembayaran:</p>
                                 <div class="payment-icons">
-                                    <img src="{{ asset('assets/images/payment/bca.png') }}" alt="BCA" class="payment-icon">
-                                    <img src="{{ asset('assets/images/payment/mandiri.png') }}" alt="Mandiri" class="payment-icon">
-                                    <img src="{{ asset('assets/images/payment/bni.png') }}" alt="BNI" class="payment-icon">
-                                    <img src="{{ asset('assets/images/payment/gopay.png') }}" alt="GoPay" class="payment-icon">
-                                    <img src="{{ asset('assets/images/payment/ovo.png') }}" alt="OVO" class="payment-icon">
+                                    <img src="{{ asset('assets/images/payment/bca.svg') }}" alt="BCA" class="payment-icon">
+                                    <img src="{{ asset('assets/images/payment/mandiri.svg') }}" alt="Mandiri" class="payment-icon">
+                                    <img src="{{ asset('assets/images/payment/bni.svg') }}" alt="BNI" class="payment-icon">
+                                    <img src="{{ asset('assets/images/payment/gopay.svg') }}" alt="GoPay" class="payment-icon">
+                                    <img src="{{ asset('assets/images/payment/ovo.svg') }}" alt="OVO" class="payment-icon">
                                 </div>
                             </div>
                         </div>
@@ -179,38 +177,7 @@
 </div>
 <!-- Cart Area End -->
 
-<!-- Recommended Products Section -->
-@if(count($cart) > 0)
-<div class="recommended-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h3 class="section-title">Produk Rekomendasi</h3>
-                <div class="recommended-products">
-                    <div class="row">
-                        @for($i = 1; $i <= 4; $i++)
-                            <div class="col-lg-3 col-md-6 mb-4">
-                                <div class="recommended-item">
-                                    <div class="item-image">
-                                        <img src="{{ asset('assets/images/product/' . ($i + 10) . '.jpg') }}" alt="Recommended Product" class="img-fluid">
-                                        <button class="quick-add-btn" onclick="quickAddToCart({{ $i + 10 }})">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                    <div class="item-info">
-                                        <h6>Bucket Premium {{ $i + 10 }}</h6>
-                                        <span class="price">Rp {{ number_format(rand(200, 400) * 1000, 0, ',', '.') }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        @endfor
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endif
+
 
 @push('styles')
 <style>
@@ -548,8 +515,8 @@
 }
 
 .payment-icon {
-    width: 40px;
-    height: 25px;
+    width: 90px;
+    height: 65px;
     object-fit: contain;
     background: white;
     padding: 3px;

@@ -11,12 +11,6 @@
 <!-- Include Featured Products Section -->
 @include('sections.featured-products')
 
-<!-- Include Category Banners Section -->
-@include('sections.category-banners')
-
-<!-- Include Testimonials Section -->
-@include('sections.testimonials')
-
 @endsection
 
 @push('styles')
