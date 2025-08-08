@@ -223,11 +223,15 @@ class OrderResource extends Resource
                     ])
                     ->toggleable(isToggledHiddenByDefault: true),
 
-                TextColumn::make('orderItems_count')
+                TextColumn::make('order_items_count')
                     ->label('Jumlah Item')
-                    ->counts('orderItems')
                     ->badge()
-                    ->color('info'),
+                    ->color('info')
+                    ->formatStateUsing(fn ($state): string => ($state ?: 0) . ' item' . (($state ?: 0) > 1 ? 's' : ''))
+                    ->getStateUsing(function (Order $record): int {
+                        return $record->orderItems()->count();
+                    })
+                    ->sortable(),
 
                 TextColumn::make('created_at')
                     ->label('Tanggal Pesanan')
@@ -441,7 +445,8 @@ class OrderResource extends Resource
         return parent::getEloquentQuery()
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
-            ]);
+            ])
+            ->withCount('orderItems');
     }
 
     public static function getNavigationBadge(): ?string
