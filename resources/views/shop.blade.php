@@ -131,8 +131,24 @@
                                     </div>
                                 @endif
                                 <div class="product-image">
-                                    <img src="{{ $product->main_image ? asset($product->main_image) : asset('assets/images/product/default.jpg') }}" 
-                                         alt="{{ $product->name }}" class="img-fluid">
+                                    @php
+                                        $imagePath = $product->main_image;
+                                        if ($imagePath) {
+                                            // Handle different image path formats
+                                            if (str_starts_with($imagePath, 'assets/')) {
+                                                $imageUrl = asset($imagePath);
+                                            } elseif (str_starts_with($imagePath, 'images/')) {
+                                                $imageUrl = asset('assets/' . $imagePath);
+                                            } elseif (str_starts_with($imagePath, 'products/')) {
+                                                $imageUrl = asset('storage/' . $imagePath);
+                                            } else {
+                                                $imageUrl = asset('storage/' . $imagePath);
+                                            }
+                                        } else {
+                                            $imageUrl = asset('assets/images/product/default.jpg');
+                                        }
+                                    @endphp
+                                    <img src="{{ $imageUrl }}" alt="{{ $product->name }}" class="img-fluid">
                                     <div class="product-overlay">
                                         <div class="product-actions">
                                             <button class="action-btn view-btn" title="View Product" onclick="quickView({{ $product->id }})">

@@ -30,7 +30,7 @@
                                 <i class="fa fa-phone"></i>
                                 <span>Telepon</span>
                             </a>
-                            <a href="https://maps.google.com/?q=JL.+Timbul,+Jakarta+Indonesia" target="_blank" class="hero-icon" title="Lihat Lokasi di Maps">
+                            <a href="https://maps.google.com/?q=jl.moh+kahfi+1+jl.timbul+rt07/04+no.44+kel.cipedek+kec.jagakarsa,jaksel" target="_blank" class="hero-icon" title="Lihat Lokasi di Maps">
                                 <i class="fa fa-map-marker-alt"></i>
                                 <span>Lokasi</span>
                             </a>
@@ -64,8 +64,8 @@
                         </div>
                         <div class="contact-content">
                             <h3>Lokasi Kami</h3>
-                            <p>JL. Timbul, Jakarta Indonesia (12630)</p>
-                            <a href="#" class="contact-link">Lihat di Maps</a>
+                            <p>jl.moh kahfi 1 jl.timbul rt07/04 no.44 kel.cipedek kec.jagakarsa,jaksel sekitaran choir expres,gg sebrang warung nasi pasundan</p>
+                            <a href="https://maps.google.com/?q=jl.moh+kahfi+1+jl.timbul+rt07/04+no.44+kel.cipedek+kec.jagakarsa,jaksel" target="_blank" class="contact-link">Lihat di Maps</a>
                         </div>
                     </div>
                 </div>
@@ -76,8 +76,8 @@
                         </div>
                         <div class="contact-content">
                             <h3>Hubungi Kami</h3>
-                            <p>0813 8430 3654</p>
-                            <a href="tel:081384303654" class="contact-link">Telepon Sekarang</a>
+                            <p>+62 813-8430-3654</p>
+                            <a href="tel:+6281384303654" class="contact-link">Telepon Sekarang</a>
                         </div>
                     </div>
                 </div>

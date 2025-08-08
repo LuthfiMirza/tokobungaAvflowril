@@ -36,6 +36,24 @@ class CartController extends Controller
         $productId = $request->product_id;
         $quantity = $request->quantity ?? 1;
 
+        // Get product details from database to ensure we have correct image path
+        $product = \App\Models\Product::find($productId);
+        $productImage = $request->image; // Use the image from request as fallback
+        
+        if ($product && $product->main_image) {
+            $imagePath = $product->main_image;
+            // Handle different image path formats
+            if (str_starts_with($imagePath, 'assets/')) {
+                $productImage = $imagePath;
+            } elseif (str_starts_with($imagePath, 'images/')) {
+                $productImage = 'assets/' . $imagePath;
+            } elseif (str_starts_with($imagePath, 'products/')) {
+                $productImage = $imagePath; // Keep storage path as is
+            } else {
+                $productImage = $imagePath; // Keep as is for other formats
+            }
+        }
+
         if (isset($cart[$productId])) {
             // If product already exists, increase quantity
             $cart[$productId]['quantity'] += $quantity;
@@ -45,9 +63,9 @@ class CartController extends Controller
                 'id' => $productId,
                 'name' => $request->name,
                 'price' => $request->price,
-                'image' => $request->image,
+                'image' => $productImage,
                 'quantity' => $quantity,
-                'category' => $request->category ?? 'Bucket Bunga'
+                'category' => $request->category ?? ($product ? $this->getCategoryLabel($product->category) : 'Bucket Bunga')
             ];
         }
 
@@ -60,6 +78,23 @@ class CartController extends Controller
             'cart_count' => $this->getCartCount($cart),
             'cart_total' => $this->calculateCartTotal($cart)
         ]);
+    }
+
+    /**
+     * Get category label from category key
+     */
+    private function getCategoryLabel($category)
+    {
+        $categories = [
+            'satin' => 'Bucket Satin',
+            'money' => 'Bucket Money',
+            'kawat' => 'Bucket Kawat',
+            'glitter' => 'Bucket Glitter',
+            'custom' => 'Bucket Custom',
+            'special' => 'Bucket Special',
+        ];
+
+        return $categories[$category] ?? ucfirst($category);
     }
 
     /**

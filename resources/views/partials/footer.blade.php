@@ -74,7 +74,7 @@
                                 <i class="fa fa-phone"></i>
                                 <div class="contact-details">
                                     <span class="label">Telepon</span>
-                                    <a href="tel:+6281384303654">+62 813 8430 3654</a>
+                                    <a href="tel:+6281384303654">+62 813-8430-3654</a>
                                 </div>
                             </div>
                             <div class="contact-item">
@@ -88,7 +88,7 @@
                                 <i class="fa fa-map-marker-alt"></i>
                                 <div class="contact-details">
                                     <span class="label">Alamat</span>
-                                    <span>JL. Timbul, Jakarta Indonesia</span>
+                                    <span>jl.moh kahfi 1 jl.timbul rt07/04 no.44 kel.cipedek kec.jagakarsa,jaksel sekitaran choir expres,gg sebrang warung nasi pasundan</span>
                                 </div>
                             </div>
                         </div>     

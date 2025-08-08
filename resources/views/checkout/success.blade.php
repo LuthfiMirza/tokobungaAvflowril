@@ -130,7 +130,7 @@
                     <div class="action-buttons">
                         @if($order->payment_method !== 'cod')
                             <a href="{{ route('checkout.payment', $order->order_number) }}" class="btn btn-primary">
-                                <i class="fa fa-credit-card me-2"></i>Lanjut Pembayaran
+                                <i class="fa fa-file-alt me-2"></i>Detail Pesanan
                             </a>
                         @endif
                         
@@ -154,7 +154,7 @@
                             <i class="fa fa-headset text-primary"></i>
                             <div>
                                 <h6>Butuh Bantuan?</h6>
-                                <p>Hubungi customer service kami di <strong>0813 8430 3654</strong> atau email <strong>support@avflowril.com</strong></p>
+                                <p>Hubungi customer service kami di <strong>+62 813-8430-3654</strong> atau email <strong>support@avflowril.com</strong></p>
                             </div>
                         </div>
                     </div>

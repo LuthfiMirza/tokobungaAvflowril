@@ -23,8 +23,8 @@ class OrderSeeder extends Seeder
                 'name' => 'Test User',
                 'email' => 'test@example.com',
                 'password' => bcrypt('password'),
-                'phone' => '081384303654',
-                'address' => 'Jl. Test No. 123, Jakarta'
+                'phone' => '+6281384303654',
+                'address' => 'jl.moh kahfi 1 jl.timbul rt07/04 no.44 kel.cipedek kec.jagakarsa,jaksel sekitaran choir expres,gg sebrang warung nasi pasundan'
             ]);
         }
 

@@ -122,7 +122,7 @@ Route::get('/test/add-to-cart', function() {
         'id' => 1,
         'name' => 'Bucket Bunga Satin Pink / Medium',
         'price' => 250000,
-        'image' => 'assets/images/product/small-size/1.jpg',
+        'image' => 'images/product/12.jpg',
         'quantity' => 1,
         'category' => 'Bucket Satin'
     ];
@@ -131,7 +131,7 @@ Route::get('/test/add-to-cart', function() {
         'id' => 2,
         'name' => 'Bucket Satin with Glitter Gold',
         'price' => 370000,
-        'image' => 'assets/images/product/small-size/2.jpg',
+        'image' => 'assets/images/product/16.jpg',
         'quantity' => 1,
         'category' => 'Bucket Glitter'
     ];
@@ -140,7 +140,7 @@ Route::get('/test/add-to-cart', function() {
         'id' => 3,
         'name' => 'Bunga Kawat Bulu Multicolor',
         'price' => 270000,
-        'image' => 'assets/images/product/small-size/3.jpg',
+        'image' => 'assets/images/product/6.jpg',
         'quantity' => 1,
         'category' => 'Bucket Kawat'
     ];
@@ -149,7 +149,7 @@ Route::get('/test/add-to-cart', function() {
         'id' => 4,
         'name' => 'Bucket Money Special Edition',
         'price' => 310000,
-        'image' => 'assets/images/product/small-size/4.jpg',
+        'image' => 'assets/images/product/18.jpg',
         'quantity' => 2,
         'category' => 'Bucket Money'
     ];
@@ -159,6 +159,43 @@ Route::get('/test/add-to-cart', function() {
     
     return redirect()->route('cart')->with('success', 'Test items added to cart');
 })->name('test.add-cart');
+
+// Test checkout without auth
+Route::get('/test/checkout', function() {
+    // Add test items to cart first
+    $testItems = [
+        1 => [
+            'id' => 1,
+            'name' => 'Bucket Bunga Satin Pink',
+            'price' => 250000,
+            'image' => 'images/product/12.jpg',
+            'quantity' => 1,
+            'category' => 'Bucket Satin'
+        ],
+        2 => [
+            'id' => 2,
+            'name' => 'Bucket Satin with Glitter Gold',
+            'price' => 370000,
+            'image' => 'assets/images/product/16.jpg',
+            'quantity' => 1,
+            'category' => 'Bucket Glitter'
+        ]
+    ];
+    
+    Session::put('cart', $testItems);
+    Session::put('cart_count', 2);
+    
+    // Mock checkout data
+    $cart = $testItems;
+    $subtotal = 620000;
+    $shippingCost = 50000;
+    $discount = 0;
+    $total = $subtotal + $shippingCost - $discount;
+    $user = null;
+    $paymentMethods = [];
+    
+    return view('checkout.index', compact('cart', 'subtotal', 'shippingCost', 'discount', 'total', 'user', 'paymentMethods'));
+})->name('test.checkout');
 
 // Protected Routes (require authentication)
 Route::middleware('auth')->group(function () {

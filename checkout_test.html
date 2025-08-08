@@ -1,0 +1,2604 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Checkout - Avflowril</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="Checkout pesanan Anda di Avflowril - Proses pembayaran yang aman dan mudah">
+    <meta name="author" content="Avflowril">
+    <meta name="generator" content="Avflowril">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="D1WbX8yontW2AluwPTAUgQrQzPjBgzysiKht1og6">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="http://127.0.0.1:8000/assets/images/favicon.ico">
+
+    <!-- CSS -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/vendor/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/vendor/font.awesome.min.css">
+    <!-- Font Awesome CDN Backup -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous">
+    <!-- Linear Icons CSS -->
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/vendor/linearicons.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/plugins/swiper-bundle.min.css">
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/plugins/animate.min.css">
+    <!-- Jquery ui CSS -->
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/plugins/jquery-ui.min.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/plugins/nice-select.min.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/plugins/magnific-popup.css">
+
+    <!-- Main Style CSS (Deactivated) -->
+    <!-- <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/style.css"> -->
+
+    <!-- Flora Theme CSS -->
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/flora-theme.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Authentication Styles -->
+    <style>
+        .header-icon {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 12px;
+            margin-left: 10px;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .header-icon:hover {
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+        }
+
+        .header-icon i {
+            margin-right: 5px;
+        }
+
+        .register-link {
+            background-color: #27ae60;
+            color: white !important;
+        }
+
+        .register-link:hover {
+            background-color: #229954;
+            color: white !important;
+        }
+
+        .user-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            min-width: 180px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 10px 0;
+            z-index: 1000;
+            margin-top: 5px;
+        }
+
+        .user-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 8px 20px;
+            color: #2c3e50;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: #e74c3c;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: #e9ecef;
+            margin: 8px 0;
+        }
+
+        .logout-btn {
+            cursor: pointer;
+        }
+
+        .cart-count {
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            min-width: 18px;
+            text-align: center;
+        }
+
+        .user-name {
+            max-width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Cart Count Styling */
+        .cart-count {
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            min-width: 18px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 1.2;
+            display: inline-block;
+        }
+
+        /* FontAwesome Icon Fallback */
+        .fa:before {
+            font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome";
+            font-weight: 900;
+        }
+
+        /* Loading state for icons */
+        .fa-shopping-cart:before {
+            content: "\f07a";
+        }
+
+        .fa-user:before {
+            content: "\f007";
+        }
+
+        .fa-sign-in-alt:before {
+            content: "\f2f6";
+        }
+
+        .fa-user-plus:before {
+            content: "\f234";
+        }
+
+        .fa-bars:before {
+            content: "\f0c9";
+        }
+
+        @media (max-width: 768px) {
+            .header-icon span {
+                display: none !important;
+            }
+            
+            .header-icon {
+                padding: 8px;
+                margin-left: 5px;
+            }
+            
+            .cart-count {
+                font-size: 10px;
+                min-width: 16px;
+                padding: 1px 4px;
+            }
+        }
+    </style>
+
+    <style>
+/* Breadcrumb */
+.breadcrumb-area {
+    background: linear-gradient(135deg, #ffeef0 0%, #fff5f6 100%);
+    padding: 60px 0;
+}
+
+.breadcrumb-title {
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.breadcrumb-nav a {
+    color: #e74c3c;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-nav a:hover {
+    color: #c0392b;
+    text-decoration: none;
+}
+
+.breadcrumb-nav i {
+    font-size: 12px;
+    opacity: 0.6;
+    color: #999;
+}
+
+.breadcrumb-nav span {
+    color: #666;
+    font-weight: 600;
+}
+
+/* Checkout Area */
+.checkout-area {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+/* Checkout Form */
+.checkout-form {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+.checkout-section {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+.checkout-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.section-title {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 1.3rem;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.25);
+}
+
+/* Delivery Methods */
+.delivery-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.delivery-method {
+    position: relative;
+}
+
+.delivery-method input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.delivery-label {
+    display: block;
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0;
+    height: 100%;
+}
+
+.delivery-label:hover {
+    border-color: #e74c3c;
+    background: #fafafa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.delivery-method input[type="radio"]:checked + .delivery-label {
+    border-color: #e74c3c;
+    background: #fff5f5;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.15);
+}
+
+.delivery-header {
+    text-align: center;
+}
+
+.delivery-icon {
+    font-size: 2.5rem;
+    color: #e74c3c;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.delivery-name {
+    font-weight: 700;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.delivery-desc {
+    color: #666;
+    font-size: 0.9rem;
+    display: block;
+}
+
+/* Store Info Card */
+.store-info-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.store-header {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.store-header h5 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin: 0;
+}
+
+.store-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.store-address,
+.store-hours,
+.store-contact {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #e74c3c;
+}
+
+.store-address strong,
+.store-hours strong,
+.store-contact strong {
+    color: #e74c3c;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.store-map {
+    text-align: center;
+}
+
+.pickup-notes {
+    margin-top: 20px;
+}
+
+.pickup-notes .alert {
+    border-left: 4px solid #17a2b8;
+    background: #e3f2fd;
+    border-color: #17a2b8;
+}
+
+.pickup-notes .alert h6 {
+    color: #17a2b8;
+    font-weight: 600;
+}
+
+.pickup-notes .alert ul {
+    padding-left: 20px;
+}
+
+.pickup-notes .alert li {
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+/* Payment Methods */
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.payment-method {
+    position: relative;
+}
+
+.payment-method input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.payment-label {
+    display: block;
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0;
+}
+
+.payment-label:hover {
+    border-color: #e74c3c;
+    background: #fafafa;
+}
+
+.payment-method input[type="radio"]:checked + .payment-label {
+    border-color: #e74c3c;
+    background: #fff5f5;
+}
+
+.payment-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.payment-logo {
+    width: 60px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.payment-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.payment-details {
+    flex: 1;
+}
+
+.payment-name {
+    font-weight: 600;
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.payment-fee {
+    background: #e74c3c;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.payment-description {
+    color: #666;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.supported-banks {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.supported-banks img {
+    width: 40px;
+    height: 26px;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 1px solid #e9ecef;
+}
+
+/* Checkout Summary */
+.checkout-summary {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 20px;
+}
+
+.summary-title {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+/* Order Items */
+.order-items {
+    margin-bottom: 25px;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.item-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-details {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+}
+
+.item-category {
+    color: #e74c3c;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+}
+
+.item-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.quantity {
+    color: #666;
+}
+
+.price {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.item-total {
+    font-weight: 700;
+    color: #e74c3c;
+    font-size: 0.9rem;
+}
+
+/* Order Totals */
+.order-totals {
+    margin-bottom: 25px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    color: #666;
+}
+
+.total-row.discount {
+    color: #27ae60;
+}
+
+.total-row.final-total {
+    color: #2c3e50;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding-top: 15px;
+}
+
+.total-divider {
+    height: 2px;
+    background: #f8f9fa;
+    margin: 15px 0;
+}
+
+/* Place Order Button */
+.place-order-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.place-order-btn:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226);
+    transform: translateY(-2px);
+}
+
+/* Security Info */
+.security-info {
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.security-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.security-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .checkout-area {
+        padding: 40px 0;
+    }
+    
+    .checkout-form,
+    .checkout-summary {
+        padding: 20px;
+    }
+    
+    .delivery-methods {
+        grid-template-columns: 1fr;
+    }
+    
+    .store-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .order-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .item-details {
+        width: 100%;
+    }
+    
+    .payment-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .delivery-icon {
+        font-size: 2rem;
+    }
+    
+    .store-info-card {
+        padding: 20px;
+    }
+    
+    .supported-banks {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .delivery-label {
+        padding: 15px;
+    }
+    
+    .delivery-name {
+        font-size: 1rem;
+    }
+    
+    .delivery-desc {
+        font-size: 0.8rem;
+    }
+    
+    .store-address,
+    .store-hours,
+    .store-contact {
+        padding: 12px;
+    }
+    
+    .payment-logo {
+        width: 50px;
+        height: 32px;
+    }
+    
+    .supported-banks img {
+        width: 35px;
+        height: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+    <!-- Include Header Partial -->
+    <!-- Header Area Start Here -->
+<header class="header-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Logo Section -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="header-logo">
+                    <a href="http://127.0.0.1:8000">
+                        <img src="http://127.0.0.1:8000/assets/images/logop1.jpg" alt="Avflowril Logo" class="logo-img">
+                        <span class="logo-text">Avflowril</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <div class="col-lg-6 d-none d-lg-block">
+                <nav class="main-nav">
+                    <ul>
+                        <li>
+                            <a href="http://127.0.0.1:8000" class="">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://127.0.0.1:8000/shop" class="">
+                                Shop
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://127.0.0.1:8000/about" class="">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://127.0.0.1:8000/contact" class="">
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <!-- Header Right Icons -->
+            <div class="col-lg-3 col-md-8 col-sm-6">
+                <div class="header-right-icons d-flex justify-content-end align-items-center">
+                    <!-- Shopping Cart -->
+                    <div class="minicart-wrap">
+                        <a href="http://127.0.0.1:8000/cart" title="Shopping Cart" class="header-icon minicart-btn" style="position: relative;">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span class="cart-count">2</span>
+                        </a>
+                        <div class="cart-item-wrapper">
+                            <div class="cart-items">
+                                <div class="cart-empty">Keranjang kosong</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- User Account -->
+                                            <div class="auth-buttons">
+                            <a href="http://127.0.0.1:8000/login" title="Login" class="header-icon login-btn">
+                                <i class="fa fa-sign-in-alt"></i>
+                                <span class="d-none d-md-inline">Masuk</span>
+                            </a>
+                            <a href="http://127.0.0.1:8000/register" title="Register" class="header-icon register-btn">
+                                <i class="fa fa-user-plus"></i>
+                                <span class="d-none d-md-inline">Daftar</span>
+                            </a>
+                        </div>
+                                        
+                    <!-- Mobile Menu Toggle -->
+                    <a href="#" class="d-lg-none header-icon" title="Menu">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Header & Logo Styles -->
+<style>
+/* Header Logo Styles */
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    max-width: 60px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: #e74c3c;
+    font-family: 'Arial', sans-serif;
+    letter-spacing: -0.5px;
+}
+
+/* Header Area */
+.header-area {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Navigation Styles */
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.main-nav ul li a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    color: #e74c3c;
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #e74c3c;
+    transition: width 0.3s ease;
+}
+
+.main-nav ul li a:hover::after,
+.main-nav ul li a.active::after {
+    width: 100%;
+}
+
+/* Navigation Auth Section Styles */
+.nav-auth-section {
+    margin-left: 20px;
+}
+
+.nav-login {
+    background: linear-gradient(135deg, #3498db, #2980b9) !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    border-radius: 25px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    border: 2px solid transparent !important;
+}
+
+.nav-login:hover,
+.nav-login.active {
+    background: linear-gradient(135deg, #2980b9, #21618c) !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+}
+
+.nav-register {
+    background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    border-radius: 25px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    border: 2px solid transparent !important;
+}
+
+.nav-register:hover,
+.nav-register.active {
+    background: linear-gradient(135deg, #c0392b, #a93226) !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+}
+
+.nav-login::after,
+.nav-register::after {
+    display: none !important;
+}
+
+/* Header Icons */
+.header-right-icons {
+    gap: 15px;
+}
+
+.header-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    color: #2c3e50;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.header-icon:hover {
+    background-color: #e74c3c;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.header-icon i {
+    font-size: 16px;
+}
+
+.cart-count {
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: 600;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-width: 18px;
+    text-align: center;
+}
+
+/* User Avatar */
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.dropdown-arrow {
+    font-size: 10px;
+    margin-left: 4px;
+    transition: transform 0.3s ease;
+}
+
+.user-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* User Dropdown - FIXED */
+.user-dropdown {
+    position: relative;
+}
+
+.user-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    min-width: 320px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    padding: 0;
+    z-index: 1000;
+    margin-top: 2px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.user-dropdown:hover .user-dropdown-menu,
+.user-dropdown-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Dropdown Header */
+.dropdown-header {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    padding: 20px;
+    border-radius: 12px 12px 0 0;
+    color: white;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-avatar-large {
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.user-details h6 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+}
+
+.user-email {
+    margin: 4px 0 0 0;
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    opacity: 0.9;
+}
+
+/* Dropdown Body */
+.dropdown-body {
+    padding: 8px 0;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: #2c3e50;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background: #f8f9fa;
+    color: #e74c3c;
+    transform: translateX(4px);
+}
+
+.item-icon {
+    width: 40px;
+    height: 40px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.dropdown-item:hover .item-icon {
+    background: #e74c3c;
+    color: white;
+}
+
+.item-icon i {
+    font-size: 16px;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.dropdown-item:hover .item-icon i {
+    color: white;
+}
+
+.item-content {
+    flex: 1;
+}
+
+.item-title {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 2px;
+}
+
+.item-desc {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.3;
+}
+
+.dropdown-item:hover .item-title {
+    color: #e74c3c;
+}
+
+.dropdown-item:hover .item-desc {
+    color: #999;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: #f0f0f0;
+    margin: 8px 20px;
+}
+
+/* Logout Button */
+.logout-form {
+    margin: 0;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.logout-icon {
+    background: #fee;
+}
+
+.logout-btn:hover .logout-icon {
+    background: #dc3545;
+}
+
+.logout-btn:hover .logout-icon i {
+    color: white;
+}
+
+.logout-btn:hover .item-title {
+    color: #dc3545;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.login-btn {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white !important;
+    border-radius: 8px;
+    padding: 10px 16px;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: linear-gradient(135deg, #2980b9, #21618c);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.register-btn {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white !important;
+    border-radius: 8px;
+    padding: 10px 16px;
+    transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+/* Cart Dropdown Styles - FIXED */
+.minicart-wrap {
+    position: relative;
+}
+
+.cart-item-wrapper {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    min-width: 350px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 1000;
+    margin-top: 2px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.minicart-wrap:hover .cart-item-wrapper,
+.cart-item-wrapper:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.cart-item-wrapper.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-img {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.cart-item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-item-content {
+    flex: 1;
+    position: relative;
+}
+
+.cart-item-content h4 {
+    font-size: 14px;
+    margin: 0 0 5px 0;
+    font-weight: 600;
+}
+
+.cart-item-content h4 a {
+    color: #333;
+    text-decoration: none;
+}
+
+.cart-item-content h4 a:hover {
+    color: #e74c3c;
+}
+
+.cart-item-quantity {
+    font-size: 12px;
+    color: #666;
+}
+
+.cart-item-remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 2px;
+}
+
+.cart-item-remove:hover {
+    color: #e74c3c;
+}
+
+.cart-footer {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.cart-total {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.cart-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.cart-buttons .btn {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 12px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.cart-buttons .btn-primary {
+    background-color: #3498db;
+    color: white;
+    border: 1px solid #3498db;
+}
+
+.cart-buttons .btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+.cart-buttons .btn-success {
+    background-color: #27ae60;
+    color: white;
+    border: 1px solid #27ae60;
+}
+
+.cart-buttons .btn-success:hover {
+    background-color: #229954;
+    border-color: #229954;
+}
+
+.cart-empty {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-area {
+        padding: 10px 0;
+    }
+    
+    .logo-img {
+        height: 40px;
+        max-width: 50px;
+    }
+    
+    .logo-text {
+        font-size: 20px;
+    }
+    
+    .header-icon span {
+        display: none !important;
+    }
+    
+    .header-icon {
+        padding: 8px;
+        min-width: 40px;
+        justify-content: center;
+    }
+    
+    .cart-item-wrapper {
+        min-width: 300px;
+        right: -50px;
+    }
+    
+    .user-dropdown-menu {
+        min-width: 280px;
+        right: -20px;
+    }
+    
+    .dropdown-header {
+        padding: 15px;
+    }
+    
+    .user-avatar-large {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .user-details h6 {
+        font-size: 14px;
+    }
+    
+    .user-email {
+        font-size: 12px;
+    }
+    
+    .dropdown-item {
+        padding: 10px 15px;
+    }
+    
+    .item-icon {
+        width: 35px;
+        height: 35px;
+        margin-right: 10px;
+    }
+    
+    .item-icon i {
+        font-size: 14px;
+    }
+    
+    .item-title {
+        font-size: 13px;
+    }
+    
+    .item-desc {
+        font-size: 11px;
+    }
+    
+    .auth-buttons {
+        gap: 6px;
+    }
+    
+    .login-btn,
+    .register-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo-img {
+        height: 35px;
+        max-width: 45px;
+    }
+    
+    .logo-text {
+        font-size: 18px;
+    }
+    
+    .header-right-icons {
+        gap: 6px;
+    }
+    
+    .header-icon {
+        padding: 6px;
+        min-width: 35px;
+    }
+    
+    .user-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+        margin-right: 6px;
+    }
+    
+    .user-dropdown-menu {
+        min-width: 260px;
+        right: -30px;
+    }
+    
+    .dropdown-header {
+        padding: 12px;
+    }
+    
+    .user-info {
+        gap: 10px;
+    }
+    
+    .user-avatar-large {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .user-details h6 {
+        font-size: 13px;
+    }
+    
+    .user-email {
+        font-size: 11px;
+    }
+    
+    .dropdown-item {
+        padding: 8px 12px;
+    }
+    
+    .item-icon {
+        width: 30px;
+        height: 30px;
+        margin-right: 8px;
+    }
+    
+    .item-icon i {
+        font-size: 12px;
+    }
+    
+    .item-title {
+        font-size: 12px;
+    }
+    
+    .item-desc {
+        font-size: 10px;
+    }
+    
+    .auth-buttons {
+        gap: 4px;
+    }
+    
+    .login-btn,
+    .register-btn {
+        padding: 6px 10px;
+        font-size: 11px;
+        min-width: 32px;
+    }
+}
+</style>
+<!-- Header Area End Here -->
+    <!-- Main Content -->
+    <!-- Breadcrumb Area Start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="breadcrumb-content">
+                    <h1 class="breadcrumb-title">Checkout</h1>
+                    <div class="breadcrumb-nav">
+                        <a href="http://127.0.0.1:8000">Home</a>
+                        <i class="fa fa-chevron-right"></i>
+                        <a href="http://127.0.0.1:8000/cart">Keranjang</a>
+                        <i class="fa fa-chevron-right"></i>
+                        <span>Checkout</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Area End -->
+
+<!-- Checkout Area Start -->
+<div class="checkout-area">
+    <div class="container">
+        <form action="http://127.0.0.1:8000/checkout/process" method="POST" id="checkoutForm">
+            <input type="hidden" name="_token" value="D1WbX8yontW2AluwPTAUgQrQzPjBgzysiKht1og6" autocomplete="off">            <div class="row">
+                <!-- Checkout Form -->
+                <div class="col-lg-8">
+                    <div class="checkout-form">
+                        <!-- Delivery Method -->
+                        <div class="checkout-section">
+                            <h4 class="section-title">
+                                <i class="fa fa-truck me-2"></i>Metode Pengiriman
+                            </h4>
+                            
+                            <div class="delivery-methods">
+                                <div class="delivery-method">
+                                    <input type="radio" id="delivery_shipping" name="delivery_method" value="shipping" 
+                                           checked required>
+                                    <label for="delivery_shipping" class="delivery-label">
+                                        <div class="delivery-info">
+                                            <div class="delivery-header">
+                                                <i class="fa fa-shipping-fast delivery-icon"></i>
+                                                <span class="delivery-name">Kirim ke Alamat</span>
+                                                <span class="delivery-desc">Dikirim langsung ke alamat Anda</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                                <div class="delivery-method">
+                                    <input type="radio" id="delivery_pickup" name="delivery_method" value="pickup" 
+                                            required>
+                                    <label for="delivery_pickup" class="delivery-label">
+                                        <div class="delivery-info">
+                                            <div class="delivery-header">
+                                                <i class="fa fa-store delivery-icon"></i>
+                                                <span class="delivery-name">Ambil di Toko</span>
+                                                <span class="delivery-desc">Ambil langsung di toko kami</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                                                    </div>
+
+                        <!-- Shipping Information -->
+                        <div class="checkout-section" id="shipping-section">
+                            <h4 class="section-title">
+                                <i class="fa fa-shipping-fast me-2"></i>Informasi Pengiriman
+                            </h4>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="shipping_name" class="form-label">Nama Lengkap *</label>
+                                    <input type="text" class="form-control" id="shipping_name" name="shipping_name" 
+                                           value="">
+                                                                    </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="shipping_phone" class="form-label">Nomor Telepon *</label>
+                                    <input type="tel" class="form-control" id="shipping_phone" name="shipping_phone" 
+                                           value="">
+                                                                    </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="shipping_address" class="form-label">Alamat Lengkap *</label>
+                                <textarea class="form-control" id="shipping_address" name="shipping_address" 
+                                          rows="3"></textarea>
+                                                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="shipping_city" class="form-label">Kota *</label>
+                                    <select class="form-control" id="shipping_city" name="shipping_city">
+                                        <option value="">Pilih Kota</option>
+                                        <option value="jakarta" >Jakarta</option>
+                                        <option value="bogor" >Bogor</option>
+                                        <option value="depok" >Depok</option>
+                                        <option value="tangerang" >Tangerang</option>
+                                        <option value="bekasi" >Bekasi</option>
+                                        <option value="bandung" >Bandung</option>
+                                        <option value="surabaya" >Surabaya</option>
+                                        <option value="yogyakarta" >Yogyakarta</option>
+                                        <option value="semarang" >Semarang</option>
+                                        <option value="medan" >Medan</option>
+                                    </select>
+                                                                    </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="shipping_postal_code" class="form-label">Kode Pos *</label>
+                                    <input type="text" class="form-control" id="shipping_postal_code" name="shipping_postal_code" 
+                                           value="">
+                                                                    </div>
+                            </div>
+                        </div>
+
+                        <!-- Pickup Information -->
+                        <div class="checkout-section" id="pickup-section" style="display: none;">
+                            <h4 class="section-title">
+                                <i class="fa fa-store me-2"></i>Informasi Pengambilan
+                            </h4>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="pickup_name" class="form-label">Nama Pengambil *</label>
+                                    <input type="text" class="form-control" id="pickup_name" name="pickup_name" 
+                                           value="">
+                                                                    </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="pickup_phone" class="form-label">Nomor Telepon *</label>
+                                    <input type="tel" class="form-control" id="pickup_phone" name="pickup_phone" 
+                                           value="">
+                                                                    </div>
+                            </div>
+                            
+                            <!-- Store Information -->
+                            <div class="store-info-card">
+                                <div class="store-header">
+                                    <h5><i class="fa fa-map-marker-alt me-2"></i>Lokasi Toko Avflowril</h5>
+                                </div>
+                                <div class="store-details">
+                                    <div class="store-address">
+                                        <strong>Alamat:</strong><br>
+                                        jl.moh kahfi 1 jl.timbul rt07/04 no.44 kel.cipedek kec.jagakarsa,jaksel sekitaran choir expres,gg sebrang warung nasi pasundan
+                                    </div>
+                                    <div class="store-hours">
+                                        <strong>Jam Operasional:</strong><br>
+                                        Senin - Sabtu: 09:00 - 18:00<br>
+                                        Minggu: 10:00 - 16:00
+                                    </div>
+                                    <div class="store-contact">
+                                        <strong>Kontak:</strong><br>
+                                        Telepon: +62 813-8430-3654<br>
+                                        WhatsApp: +62 813-8430-3654
+                                    </div>
+                                </div>
+                                <div class="store-map">
+                                    <a href="https://maps.app.goo.gl/3gmJhEL5L4a8q1qQ8" 
+                                       target="_blank" class="btn btn-outline-primary btn-sm">
+                                        <i class="fa fa-map me-1"></i>Lihat di Google Maps
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="pickup-notes">
+                                <div class="alert alert-info">
+                                    <h6><i class="fa fa-info-circle me-2"></i>Informasi Penting:</h6>
+                                    <ul class="mb-0">
+                                        <li>Pesanan akan siap diambil dalam 1-2 hari kerja setelah pembayaran dikonfirmasi</li>
+                                        <li>Bawa bukti pembayaran dan identitas diri saat pengambilan</li>
+                                        <li>Jika yang mengambil bukan pemesan, bawa surat kuasa dan fotokopi identitas pemesan</li>
+                                        <li>Barang yang sudah diambil tidak dapat dikembalikan</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div class="checkout-section">
+                            <h4 class="section-title">
+                                <i class="fa fa-credit-card me-2"></i>Metode Pembayaran
+                            </h4>
+                            
+                            <div class="payment-methods">
+                                <div class="payment-method">
+                                    <input type="radio" id="payment_bank_transfer" name="payment_method" value="bank_transfer" 
+                                            required>
+                                    <label for="payment_bank_transfer" class="payment-label">
+                                        <div class="payment-info">
+                                            <div class="payment-header">
+                                                <div class="payment-logo">
+                                                    <img src="http://127.0.0.1:8000/assets/images/payment/bank-transfer.svg" alt="Transfer Bank">
+                                                </div>
+                                                <div class="payment-details">
+                                                    <span class="payment-name">Transfer Bank</span>
+                                                    <p class="payment-description">Transfer melalui rekening bank</p>
+                                                </div>
+                                            </div>
+                                            <div class="supported-banks">
+                                                <img src="http://127.0.0.1:8000/assets/images/payment/bca.svg" alt="BCA">
+                                                <img src="http://127.0.0.1:8000/assets/images/payment/mandiri.svg" alt="Mandiri">
+                                                <img src="http://127.0.0.1:8000/assets/images/payment/bni.svg" alt="BNI">
+                                                <img src="http://127.0.0.1:8000/assets/images/payment/bri.svg" alt="BRI">
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="payment-method">
+                                    <input type="radio" id="payment_cod" name="payment_method" value="cod" 
+                                            required>
+                                    <label for="payment_cod" class="payment-label">
+                                        <div class="payment-info">
+                                            <div class="payment-header">
+                                                <div class="payment-logo">
+                                                    <img src="http://127.0.0.1:8000/assets/images/payment/cod.svg" alt="COD">
+                                                </div>
+                                                <div class="payment-details">
+                                                    <span class="payment-name">Bayar di Tempat (COD)</span>
+                                                    <span class="payment-fee">+Rp 5.000</span>
+                                                    <p class="payment-description">Bayar saat barang diterima</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                                                    </div>
+
+                        <!-- Order Notes -->
+                        <div class="checkout-section">
+                            <h4 class="section-title">
+                                <i class="fa fa-sticky-note me-2"></i>Catatan Pesanan
+                            </h4>
+                            
+                            <div class="mb-3">
+                                <label for="notes" class="form-label">Catatan untuk pesanan (opsional)</label>
+                                <textarea class="form-control" id="notes" name="notes" rows="3" 
+                                          placeholder="Catatan khusus untuk pesanan Anda..."></textarea>
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="col-lg-4">
+                    <div class="checkout-summary">
+                        <h4 class="summary-title">Ringkasan Pesanan</h4>
+                        
+                        <!-- Order Items -->
+                        <div class="order-items">
+                                                            <div class="order-item">
+                                    <div class="item-image">
+                                                                                <img src="http://127.0.0.1:8000/assets/images/product/12.jpg" alt="Bucket Bunga Satin Pink">
+                                    </div>
+                                    <div class="item-details">
+                                        <h6 class="item-name">Bucket Bunga Satin Pink</h6>
+                                        <p class="item-category">Bucket Satin</p>
+                                        <div class="item-price">
+                                            <span class="quantity">1x</span>
+                                            <span class="price">Rp 250.000</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-total">
+                                        Rp 250.000
+                                    </div>
+                                </div>
+                                                            <div class="order-item">
+                                    <div class="item-image">
+                                                                                <img src="http://127.0.0.1:8000/assets/images/product/16.jpg" alt="Bucket Satin with Glitter Gold">
+                                    </div>
+                                    <div class="item-details">
+                                        <h6 class="item-name">Bucket Satin with Glitter Gold</h6>
+                                        <p class="item-category">Bucket Glitter</p>
+                                        <div class="item-price">
+                                            <span class="quantity">1x</span>
+                                            <span class="price">Rp 370.000</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-total">
+                                        Rp 370.000
+                                    </div>
+                                </div>
+                                                    </div>
+
+                        <!-- Order Totals -->
+                        <div class="order-totals">
+                            <div class="total-row">
+                                <span>Subtotal</span>
+                                <span>Rp 620.000</span>
+                            </div>
+                            
+                            <div class="total-row shipping-cost-row">
+                                <span>Ongkos Kirim</span>
+                                <span id="shippingCostDisplay">Rp 50.000</span>
+                            </div>
+                            
+                            <div class="total-row cod-fee" style="display: none;">
+                                <span>Biaya COD</span>
+                                <span>Rp 5.000</span>
+                            </div>
+                            
+                                                        
+                            <div class="total-divider"></div>
+                            
+                            <div class="total-row final-total">
+                                <span>Total</span>
+                                <span id="finalTotal">Rp 670.000</span>
+                            </div>
+                        </div>
+
+                        <!-- Place Order Button -->
+                        <button type="submit" class="place-order-btn">
+                            <i class="fa fa-lock me-2"></i>Buat Pesanan
+                        </button>
+
+                        <!-- Security Info -->
+                        <div class="security-info">
+                            <div class="security-item">
+                                <i class="fa fa-shield-alt text-success me-2"></i>
+                                <span>Transaksi Aman & Terpercaya</span>
+                            </div>
+                            <div class="security-item">
+                                <i class="fa fa-truck text-primary me-2"></i>
+                                <span>Pengiriman Cepat & Terjamin</span>
+                            </div>
+                            <div class="security-item">
+                                <i class="fa fa-undo text-info me-2"></i>
+                                <span>Garansi Uang Kembali</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Checkout Area End -->
+
+
+
+    <!-- Include Footer Partial -->
+    <!-- Footer Area Start -->
+<footer class="modern-footer">
+    <!-- Main Footer Content -->
+    <div class="footer-main">
+        <div class="container">
+            <div class="row">
+                <!-- Brand & About Section -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-widget brand-widget">
+                        <div class="footer-logo">
+                            <h3>Avflowril</h3>
+                            <span class="tagline">Beautiful Bucket Flowers</span>
+                        </div>
+                        <p class="brand-description">
+                            Spesialis bucket bunga terbaik untuk hadiah istimewa. Kami menciptakan kebahagiaan melalui keindahan bucket bunga yang dibuat dengan penuh cinta dan dedikasi.
+                        </p>
+                        
+                        <!-- Social Media Links -->
+                        <div class="social-links">
+                            <h5>Ikuti Kami</h5>
+                            <div class="social-icons">
+                                <a href="#" class="social-link facebook" title="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="social-link instagram" title="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-link whatsapp" title="WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <a href="#" class="social-link tiktok" title="TikTok">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Links Section -->
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-widget links-widget">
+                        <h4 class="widget-title">Navigasi</h4>
+                        <ul class="footer-links">
+                            <li><a href="http://127.0.0.1:8000">Home</a></li>
+                            <li><a href="http://127.0.0.1:8000/about">About</a></li>
+                            <li><a href="http://127.0.0.1:8000/shop">Shop</a></li>
+                            <li><a href="http://127.0.0.1:8000/contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Categories Section -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget links-widget">
+                        <h4 class="widget-title">Kategori Produk</h4>
+                        <ul class="footer-links">
+                            <li><a href="http://127.0.0.1:8000/shop">Bucket Satin</a></li>
+                            <li><a href="http://127.0.0.1:8000/shop">Bucket Money</a></li>
+                            <li><a href="http://127.0.0.1:8000/shop">Bucket Kawat Bulu</a></li>
+                            <li><a href="http://127.0.0.1:8000/shop">Bucket Glitter</a></li>
+                            <li><a href="http://127.0.0.1:8000/shop">Bucket Custom</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Contact & Newsletter Section -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget contact-widget">
+                        <h4 class="widget-title">Hubungi Kami</h4>
+                        
+                        <!-- Contact Info -->
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fa fa-phone"></i>
+                                <div class="contact-details">
+                                    <span class="label">Telepon</span>
+                                    <a href="tel:+6281384303654">+62 813-8430-3654</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fa fa-envelope"></i>
+                                <div class="contact-details">
+                                    <span class="label">Email</span>
+                                    <a href="mailto:avflowril@gmail.com">avflowril@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fa fa-map-marker-alt"></i>
+                                <div class="contact-details">
+                                    <span class="label">Alamat</span>
+                                    <span>jl.moh kahfi 1 jl.timbul rt07/04 no.44 kel.cipedek kec.jagakarsa,jaksel sekitaran choir expres,gg sebrang warung nasi pasundan</span>
+                                </div>
+                            </div>
+                        </div>     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="copyright-text">
+                        <p>&copy; 2025 <strong>Avflowril</strong>. All Rights Reserved.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Shipping Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Area End -->
+
+<style>
+/* Modern Footer Styles */
+.modern-footer {
+    background: linear-gradient(135deg, #FDF6F8, #F2C4D6);
+    color: var(--accent-color);
+    margin-top: 80px;
+    border-top: 3px solid var(--primary-color);
+}
+
+.footer-main {
+    padding: 60px 0 40px;
+}
+
+.footer-widget {
+    margin-bottom: 30px;
+}
+
+.widget-title {
+    font-family: var(--font-secondary);
+    font-size: 20px;
+    color: var(--accent-color);
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+    font-weight: 700;
+}
+
+.widget-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--primary-color);
+}
+
+/* Brand Widget */
+.brand-widget .footer-logo h3 {
+    font-family: var(--font-secondary);
+    font-size: 32px;
+    color: var(--accent-color);
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.brand-widget .tagline {
+    color: var(--primary-color);
+    font-style: italic;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.brand-description {
+    color: var(--accent-color);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+/* Social Links */
+.social-links h5 {
+    color: var(--accent-color);
+    font-size: 16px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: var(--transition-main);
+    font-size: 16px;
+}
+
+.social-link.facebook {
+    background: #3b5998;
+    color: var(--white-color);
+}
+
+.social-link.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: var(--white-color);
+}
+
+.social-link.whatsapp {
+    background: #25d366;
+    color: var(--white-color);
+}
+
+.social-link.tiktok {
+    background: #000000;
+    color: var(--white-color);
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: var(--transition-main);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    opacity: 0.8;
+}
+
+.footer-links a::before {
+    content: '→';
+    color: var(--primary-color);
+    margin-right: 8px;
+    transition: var(--transition-main);
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+    opacity: 1;
+}
+
+.footer-links a:hover::before {
+    margin-right: 12px;
+}
+
+/* Contact Widget */
+.contact-info {
+    margin-bottom: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.contact-item i {
+    color: var(--primary-color);
+    font-size: 18px;
+    margin-top: 2px;
+    width: 20px;
+}
+
+.contact-details .label {
+    display: block;
+    color: var(--primary-color);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+    font-weight: 600;
+}
+
+.contact-details a,
+.contact-details span {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 14px;
+    transition: var(--transition-main);
+}
+
+.contact-details a:hover {
+    color: var(--primary-color);
+}
+
+/* Newsletter */
+.newsletter-section {
+    background: var(--white-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--primary-color);
+    box-shadow: var(--shadow-light);
+}
+
+.newsletter-section h5 {
+    color: var(--accent-color);
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.newsletter-section p {
+    color: var(--accent-color);
+    font-size: 13px;
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+
+.newsletter-input {
+    display: flex;
+    gap: 0;
+    border-radius: 25px;
+    overflow: hidden;
+    background: #f8f9fa;
+    border: 1px solid var(--border-color);
+}
+
+.newsletter-input input {
+    flex: 1;
+    border: none;
+    padding: 12px 16px;
+    font-size: 14px;
+    outline: none;
+    background: transparent;
+    color: var(--accent-color);
+}
+
+.newsletter-input input::placeholder {
+    color: var(--accent-color);
+    opacity: 0.6;
+}
+
+.newsletter-btn {
+    background: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: var(--transition-main);
+}
+
+.newsletter-btn:hover {
+    background: var(--primary-dark, #c0392b);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    background: var(--primary-color);
+    padding: 20px 0;
+    border-top: 1px solid rgba(217, 90, 141, 0.3);
+}
+
+.copyright-text p {
+    margin: 0;
+    color: var(--white-color);
+    font-size: 14px;
+}
+
+.footer-bottom-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.footer-bottom-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 13px;
+    transition: var(--transition-main);
+}
+
+.footer-bottom-links a:hover {
+    color: var(--white-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-main {
+        padding: 40px 0 30px;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+    
+    .footer-bottom-links {
+        justify-content: center;
+        margin-top: 15px;
+    }
+    
+    .copyright-text {
+        text-align: center;
+    }
+    
+    .newsletter-input {
+        flex-direction: column;
+        border-radius: var(--border-radius);
+    }
+    
+    .newsletter-input input,
+    .newsletter-btn {
+        border-radius: 0;
+    }
+    
+    .newsletter-input input {
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+    
+    .newsletter-btn {
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+}
+
+@media (max-width: 576px) {
+    .brand-widget .footer-logo h3 {
+        font-size: 28px;
+    }
+    
+    .widget-title {
+        font-size: 18px;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .newsletter-section {
+        padding: 15px;
+    }
+}
+</style>
+
+    <!-- Scroll to Top Start -->
+    <a class="scroll-to-top" href="#">
+        <i class="lnr lnr-arrow-up"></i>
+    </a>
+    <!-- Scroll to Top End -->
+
+    <!-- JS -->
+    <!-- jQuery JS -->
+    <script src="http://127.0.0.1:8000/assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <!-- jQuery Migrate JS -->
+    <script src="http://127.0.0.1:8000/assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+    <!-- Modernizer JS -->
+    <script src="http://127.0.0.1:8000/assets/js/vendor/modernizr-3.7.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="http://127.0.0.1:8000/assets/js/vendor/bootstrap.bundle.min.js"></script>
+
+    <!-- Swiper Slider JS -->
+    <script src="http://127.0.0.1:8000/assets/js/plugins/swiper-bundle.min.js"></script>
+    <!-- nice select JS -->
+    <script src="http://127.0.0.1:8000/assets/js/plugins/nice-select.min.js"></script>
+    <!-- Ajaxchimpt js -->
+    <script src="http://127.0.0.1:8000/assets/js/plugins/jquery.ajaxchimp.min.js"></script>
+    <!-- Jquery Ui js -->
+    <script src="http://127.0.0.1:8000/assets/js/plugins/jquery-ui.min.js"></script>
+    <!-- Jquery Countdown js -->
+    <script src="http://127.0.0.1:8000/assets/js/plugins/jquery.countdown.min.js"></script>
+    <!-- jquery magnific popup js -->
+    <script src="http://127.0.0.1:8000/assets/js/plugins/jquery.magnific-popup.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="http://127.0.0.1:8000/assets/js/main.js"></script>
+
+    <!-- Cart JS -->
+    <script src="http://127.0.0.1:8000/assets/js/cart.js"></script>
+
+    <script>
+$(document).ready(function() {
+    // Handle delivery method change
+    $('input[name="delivery_method"]').change(function() {
+        const selectedMethod = $(this).val();
+        const shippingSection = $('#shipping-section');
+        const pickupSection = $('#pickup-section');
+        const shippingCostRow = $('.shipping-cost-row');
+        const shippingCostDisplay = $('#shippingCostDisplay');
+        
+        if (selectedMethod === 'shipping') {
+            shippingSection.show();
+            pickupSection.hide();
+            shippingCostRow.show();
+            
+            // Make shipping fields required
+            $('#shipping_name, #shipping_phone, #shipping_address, #shipping_city, #shipping_postal_code').attr('required', true);
+            $('#pickup_name, #pickup_phone').attr('required', false);
+            
+            // Update shipping cost
+            shippingCostDisplay.text('Rp 50.000');
+        } else if (selectedMethod === 'pickup') {
+            shippingSection.hide();
+            pickupSection.show();
+            shippingCostRow.hide();
+            
+            // Make pickup fields required
+            $('#pickup_name, #pickup_phone').attr('required', true);
+            $('#shipping_name, #shipping_phone, #shipping_address, #shipping_city, #shipping_postal_code').attr('required', false);
+            
+            // Set shipping cost to 0
+            shippingCostDisplay.text('Rp 0');
+        }
+        
+        updateTotal();
+    });
+    
+    // Handle payment method change
+    $('input[name="payment_method"]').change(function() {
+        updateTotal();
+    });
+    
+    // Function to update total
+    function updateTotal() {
+        const selectedDelivery = $('input[name="delivery_method"]:checked').val();
+        const selectedPayment = $('input[name="payment_method"]:checked').val();
+        const codFeeRow = $('.cod-fee');
+        const finalTotalElement = $('#finalTotal');
+        
+        // Get base total from backend
+        let baseTotal = 620000;
+        let shippingCost = 0;
+        let discount = 0;
+        
+        // Add shipping cost if delivery method is shipping
+        if (selectedDelivery === 'shipping') {
+            shippingCost = 50000;
+        }
+        
+        // Calculate total
+        let total = baseTotal + shippingCost - discount;
+        
+        // Add COD fee if applicable
+        if (selectedPayment === 'cod') {
+            codFeeRow.show();
+            total += 5000;
+        } else {
+            codFeeRow.hide();
+        }
+        
+        // Update final total
+        finalTotalElement.text('Rp ' + total.toLocaleString('id-ID'));
+    }
+    
+    // Handle city change for shipping cost
+    $('#shipping_city').change(function() {
+        const city = $(this).val();
+        
+        if (city) {
+            // You can add AJAX call here to calculate shipping cost
+            // For now, we'll use the existing shipping cost
+        }
+    });
+    
+    // Form validation
+    $('#checkoutForm').submit(function(e) {
+        let isValid = true;
+        const selectedDelivery = $('input[name="delivery_method"]:checked').val();
+        
+        // Check delivery method specific required fields
+        if (selectedDelivery === 'shipping') {
+            const shippingFields = ['#shipping_name', '#shipping_phone', '#shipping_address', '#shipping_city', '#shipping_postal_code'];
+            shippingFields.forEach(function(field) {
+                if (!$(field).val()) {
+                    isValid = false;
+                    $(field).addClass('is-invalid');
+                } else {
+                    $(field).removeClass('is-invalid');
+                }
+            });
+        } else if (selectedDelivery === 'pickup') {
+            const pickupFields = ['#pickup_name', '#pickup_phone'];
+            pickupFields.forEach(function(field) {
+                if (!$(field).val()) {
+                    isValid = false;
+                    $(field).addClass('is-invalid');
+                } else {
+                    $(field).removeClass('is-invalid');
+                }
+            });
+        }
+        
+        // Check other required fields
+        $(this).find('[required]').each(function() {
+            if (!$(this).val()) {
+                isValid = false;
+                $(this).addClass('is-invalid');
+            } else {
+                $(this).removeClass('is-invalid');
+            }
+        });
+        
+        if (!isValid) {
+            e.preventDefault();
+            alert('Mohon lengkapi semua field yang wajib diisi.');
+            
+            // Scroll to first invalid field
+            const firstInvalid = $('.is-invalid').first();
+            if (firstInvalid.length) {
+                $('html, body').animate({
+                    scrollTop: firstInvalid.offset().top - 100
+                }, 500);
+            }
+        }
+    });
+    
+    // Initialize on page load
+    $('input[name="delivery_method"]:checked').trigger('change');
+});
+</script>
+</body>
+
+</html>

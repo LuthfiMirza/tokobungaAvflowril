@@ -175,8 +175,7 @@
                                 <div class="store-details">
                                     <div class="store-address">
                                         <strong>Alamat:</strong><br>
-                                        Jl. Raya Bogor No. 123, Cibinong<br>
-                                        Bogor, Jawa Barat 16911
+                                        jl.moh kahfi 1 jl.timbul rt07/04 no.44 kel.cipedek kec.jagakarsa,jaksel sekitaran choir expres,gg sebrang warung nasi pasundan
                                     </div>
                                     <div class="store-hours">
                                         <strong>Jam Operasional:</strong><br>
@@ -185,12 +184,12 @@
                                     </div>
                                     <div class="store-contact">
                                         <strong>Kontak:</strong><br>
-                                        Telepon: (021) 8765-4321<br>
-                                        WhatsApp: 0813 8430 3654
+                                        Telepon: +62 813-8430-3654<br>
+                                        WhatsApp: +62 813-8430-3654
                                     </div>
                                 </div>
                                 <div class="store-map">
-                                    <a href="https://maps.google.com/?q=Jl.+Raya+Bogor+No.+123+Cibinong+Bogor" 
+                                    <a href="https://maps.app.goo.gl/3gmJhEL5L4a8q1qQ8" 
                                        target="_blank" class="btn btn-outline-primary btn-sm">
                                         <i class="fa fa-map me-1"></i>Lihat di Google Maps
                                     </a>
@@ -289,34 +288,53 @@
                         
                         <!-- Order Items -->
                         <div class="order-items">
-                            <div class="order-item">
-                                <div class="item-image">
-                                    <img src="{{ asset('assets/images/product/small-size/1.jpg') }}" alt="Product">
-                                </div>
-                                <div class="item-details">
-                                    <h6 class="item-name">Bucket Bunga Satin Pink</h6>
-                                    <p class="item-category">Medium</p>
-                                    <div class="item-price">
-                                        <span class="quantity">1x</span>
-                                        <span class="price">Rp 250.000</span>
+                            @foreach($cart as $item)
+                                <div class="order-item">
+                                    <div class="item-image">
+                                        @php
+                                            $imagePath = $item['image'] ?? '';
+                                            if ($imagePath) {
+                                                // Handle different image path formats
+                                                if (str_starts_with($imagePath, 'assets/')) {
+                                                    $imageUrl = asset($imagePath);
+                                                } elseif (str_starts_with($imagePath, 'images/')) {
+                                                    $imageUrl = asset('assets/' . $imagePath);
+                                                } elseif (str_starts_with($imagePath, 'products/')) {
+                                                    $imageUrl = asset('storage/' . $imagePath);
+                                                } else {
+                                                    $imageUrl = asset('storage/' . $imagePath);
+                                                }
+                                            } else {
+                                                $imageUrl = asset('assets/images/product/default.jpg');
+                                            }
+                                        @endphp
+                                        <img src="{{ $imageUrl }}" alt="{{ $item['name'] }}">
+                                    </div>
+                                    <div class="item-details">
+                                        <h6 class="item-name">{{ $item['name'] }}</h6>
+                                        <p class="item-category">{{ $item['category'] ?? 'Bucket Bunga' }}</p>
+                                        <div class="item-price">
+                                            <span class="quantity">{{ $item['quantity'] }}x</span>
+                                            <span class="price">Rp {{ number_format($item['price'], 0, ',', '.') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-total">
+                                        Rp {{ number_format($item['price'] * $item['quantity'], 0, ',', '.') }}
                                     </div>
                                 </div>
-                                <div class="item-total">
-                                    Rp 250.000
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
 
                         <!-- Order Totals -->
                         <div class="order-totals">
                             <div class="total-row">
                                 <span>Subtotal</span>
-                                <span>Rp 250.000</span>
+                                <span>Rp {{ number_format($subtotal, 0, ',', '.') }}</span>
                             </div>
                             
                             <div class="total-row shipping-cost-row">
                                 <span>Ongkos Kirim</span>
-                                <span id="shippingCostDisplay">Rp 50.000</span>
+                                <span id="shippingCostDisplay">Rp {{ number_format($shippingCost, 0, ',', '.') }}</span>
                             </div>
                             
                             <div class="total-row cod-fee" style="display: none;">
@@ -324,11 +342,18 @@
                                 <span>Rp 5.000</span>
                             </div>
                             
+                            @if($discount > 0)
+                                <div class="total-row discount">
+                                    <span>Diskon</span>
+                                    <span>-Rp {{ number_format($discount, 0, ',', '.') }}</span>
+                                </div>
+                            @endif
+                            
                             <div class="total-divider"></div>
                             
                             <div class="total-row final-total">
                                 <span>Total</span>
-                                <span id="finalTotal">Rp 300.000</span>
+                                <span id="finalTotal">Rp {{ number_format($total, 0, ',', '.') }}</span>
                             </div>
                         </div>
 
@@ -983,17 +1008,18 @@ $(document).ready(function() {
         const codFeeRow = $('.cod-fee');
         const finalTotalElement = $('#finalTotal');
         
-        // Get base total
-        let baseTotal = 250000;
+        // Get base total from backend
+        let baseTotal = {{ $subtotal }};
         let shippingCost = 0;
+        let discount = {{ $discount }};
         
         // Add shipping cost if delivery method is shipping
         if (selectedDelivery === 'shipping') {
-            shippingCost = 50000;
+            shippingCost = {{ $shippingCost }};
         }
         
         // Calculate total
-        let total = baseTotal + shippingCost;
+        let total = baseTotal + shippingCost - discount;
         
         // Add COD fee if applicable
         if (selectedPayment === 'cod') {
