@@ -191,12 +191,32 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('images')
+                ImageColumn::make('main_image')
                     ->label('Gambar')
                     ->circular()
-                    ->stacked()
-                    ->limit(1)
-                    ->limitedRemainingText(),
+                    ->size(60)
+                    ->defaultImageUrl(url('/assets/images/product/default.jpg'))
+                    ->getStateUsing(function (Product $record): ?string {
+                        if ($record->images && is_array($record->images) && count($record->images) > 0) {
+                            $imagePath = $record->images[0];
+                            
+                            // Handle different image path formats
+                            if (str_starts_with($imagePath, 'products/')) {
+                                // Filament uploaded images
+                                return url('storage/' . $imagePath);
+                            } elseif (str_starts_with($imagePath, 'assets/')) {
+                                // Seeded images with full path
+                                return url($imagePath);
+                            } elseif (str_starts_with($imagePath, 'images/')) {
+                                // Seeded images with partial path
+                                return url('assets/' . $imagePath);
+                            } else {
+                                // Fallback for other formats
+                                return url('storage/' . $imagePath);
+                            }
+                        }
+                        return null;
+                    }),
 
                 TextColumn::make('name')
                     ->label('Nama Produk')

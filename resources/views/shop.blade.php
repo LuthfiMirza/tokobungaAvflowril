@@ -1864,12 +1864,72 @@ function populateModal(product) {
     // Rating
     document.getElementById('modalRating').textContent = `(${product.reviewCount} ulasan)`;
     
-    // Images
-    const mainImage = product.images && product.images.length > 0 ? product.images[0] : '/assets/images/product/default.jpg';
+    // Images - handle different image path formats
+    let mainImage = '/assets/images/product/default.jpg';
+    if (product.images && product.images.length > 0) {
+        const imagePath = product.images[0];
+        if (typeof imagePath === 'string') {
+            if (imagePath.startsWith('http')) {
+                mainImage = imagePath;
+            } else if (imagePath.startsWith('assets/')) {
+                mainImage = '/' + imagePath;
+            } else if (imagePath.startsWith('images/')) {
+                mainImage = '/assets/' + imagePath;
+            } else if (imagePath.startsWith('products/')) {
+                mainImage = '/storage/' + imagePath;
+            } else {
+                mainImage = '/storage/' + imagePath;
+            }
+        }
+    }
+    
+    // Set main image
     document.getElementById('modalMainImage').src = mainImage;
-    document.getElementById('modalThumb1').src = mainImage;
-    document.getElementById('modalThumb2').src = product.images && product.images[1] ? product.images[1] : mainImage;
-    document.getElementById('modalThumb3').src = product.images && product.images[2] ? product.images[2] : mainImage;
+    document.getElementById('modalMainImage').alt = product.name;
+    
+    // Set thumbnail images
+    const thumbnails = [
+        document.getElementById('modalThumb1'),
+        document.getElementById('modalThumb2'),
+        document.getElementById('modalThumb3'),
+        document.getElementById('modalThumb4')
+    ];
+    
+    // Show/hide thumbnails based on available images
+    thumbnails.forEach((thumb, index) => {
+        if (thumb) {
+            if (product.images && product.images[index]) {
+                let thumbImage = product.images[index];
+                if (typeof thumbImage === 'string') {
+                    if (thumbImage.startsWith('http')) {
+                        thumb.src = thumbImage;
+                    } else if (thumbImage.startsWith('assets/')) {
+                        thumb.src = '/' + thumbImage;
+                    } else if (thumbImage.startsWith('images/')) {
+                        thumb.src = '/assets/' + thumbImage;
+                    } else if (thumbImage.startsWith('products/')) {
+                        thumb.src = '/storage/' + thumbImage;
+                    } else {
+                        thumb.src = '/storage/' + thumbImage;
+                    }
+                } else {
+                    thumb.src = mainImage;
+                }
+                thumb.alt = product.name;
+                thumb.parentElement.style.display = 'block';
+            } else {
+                // Use main image as fallback for missing thumbnails
+                thumb.src = mainImage;
+                thumb.alt = product.name;
+                thumb.parentElement.style.display = index === 0 ? 'block' : 'none';
+            }
+        }
+    });
+    
+    // Reset thumbnail active state
+    document.querySelectorAll('.thumbnail-item-modal').forEach((item, index) => {
+        item.classList.toggle('active', index === 0);
+    });
     
     // Specifications
     document.getElementById('modalSize').textContent = product.specifications.size;
