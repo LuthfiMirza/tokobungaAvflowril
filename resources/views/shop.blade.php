@@ -319,9 +319,14 @@
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="productQuickViewModalLabel">
-                    <i class="fa fa-eye me-2"></i>Quick View
-                </h5>
+                <div class="modal-header-left">
+                    <button type="button" class="btn-back" data-bs-dismiss="modal" aria-label="Back" title="Kembali">
+                        <i class="fa fa-arrow-left"></i>
+                    </button>
+                    <h5 class="modal-title" id="productQuickViewModalLabel">
+                        <i class="fa fa-eye me-2"></i>Quick View
+                    </h5>
+                </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -1118,15 +1123,19 @@
 /* Modal Improvements */
 .modal-content {
     max-height: 90vh;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-header {
     border-bottom: none;
+    flex-shrink: 0;
 }
 
 .modal-body {
     background: #fafafa;
+    overflow-y: auto;
+    flex: 1;
 }
 
 .product-badge-modal span {
@@ -1262,11 +1271,41 @@
     color: white;
     border-bottom: none;
     padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-back {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.btn-back:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.1);
 }
 
 .modal-title {
     font-weight: 600;
     font-size: 18px;
+    margin: 0;
 }
 
 .btn-close {
