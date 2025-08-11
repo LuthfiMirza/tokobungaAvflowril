@@ -75,9 +75,7 @@
                                     <button class="view-btn active" data-view="grid" title="Grid View">
                                         <i class="fa fa-th"></i>
                                     </button>
-                                    <button class="view-btn" data-view="list" title="List View">
-                                        <i class="fa fa-list"></i>
-                                    </button>
+                                 
                                 </div>
                                 <div class="sort-dropdown">
                                     <select class="form-select" onchange="sortProducts(this.value)">
@@ -327,7 +325,7 @@
                         <i class="fa fa-eye me-2"></i>Quick View
                     </h5>
                 </div>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                
             </div>
             <div class="modal-body">
                 <div class="row">
